@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahalle Döner — Menü</title>
-  <meta name="description" content="Mahalle Döner Bitez, Bodrum — tavuk döner dürüm, çıtır kanat ve çıtır burger menüsü." />
+  <title>Mahalle Döner</title>
+  <meta name="description" content="Mahalle Döner Bitez, Bodrum — menü, Instagram, web sitesi, yol tarifi ve değerlendirme." />
   <meta name="theme-color" content="#7a1e12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,456 +22,169 @@
       --muted: #8a6f57;
       --card: #fffaf1;
       --line: #e7d6ba;
-      --shadow: 0 8px 24px rgba(58, 36, 23, .12);
+      --shadow: 0 10px 26px rgba(58, 36, 23, .14);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--ink);
+      min-height: 100vh;
       background:
-        radial-gradient(circle at 20% -10%, #fff8ec, transparent 55%),
-        var(--cream);
-      line-height: 1.5;
+        radial-gradient(circle at 50% -8%, #9c2a1a 0%, #7a1e12 42%, #5f160d 100%);
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 90px;
+      display: flex;
+      justify-content: center;
+      padding: 34px 20px 40px;
     }
 
-    .wrap { max-width: 640px; margin: 0 auto; }
+    .hub { width: 100%; max-width: 440px; text-align: center; }
 
-    /* ---------- Header ---------- */
-    header {
-      position: relative;
-      background:
-        linear-gradient(160deg, var(--red) 0%, var(--red-soft) 100%);
-      color: var(--cream);
-      text-align: center;
-      padding: 46px 24px 54px;
-      overflow: hidden;
+    /* ---------- Brand ---------- */
+    .logo {
+      width: 92px; height: 92px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: grid; place-items: center;
+      font-size: 46px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.28);
+      border: 3px solid var(--gold-soft);
     }
-    header::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: -1px;
-      height: 26px;
-      background:
-        radial-gradient(circle at 12px -6px, var(--cream) 12px, transparent 13px) repeat-x;
-      background-size: 26px 26px;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      border: 1px solid rgba(226, 180, 90, .5);
-      border-radius: 999px;
-      padding: 5px 14px;
-      margin-bottom: 16px;
-    }
-    header h1 {
+    .brand {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
-      font-size: 44px;
-      line-height: 1.05;
+      font-size: 38px;
+      color: var(--cream);
+      line-height: 1.1;
       letter-spacing: .5px;
     }
-    header h1 span { color: var(--gold-soft); }
-    header .tagline {
-      margin-top: 10px;
-      font-size: 15px;
-      color: rgba(251, 243, 230, .82);
+    .brand span { color: var(--gold-soft); }
+    .sub {
+      margin-top: 8px;
+      font-size: 14px;
+      color: rgba(251, 243, 230, .8);
+      letter-spacing: .3px;
     }
-    .header-meta {
-      margin-top: 18px;
-      display: flex;
-      gap: 8px 18px;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: rgba(251, 243, 230, .9);
+    .status {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: rgba(251, 243, 230, .85);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(226,180,90,.35);
+      padding: 6px 14px;
+      border-radius: 999px;
     }
-    .header-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #6ad07f; box-shadow: 0 0 0 3px rgba(106,208,127,.25); }
 
-    /* ---------- Sticky category nav ---------- */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: var(--cream);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 2px 10px rgba(58,36,23,.05);
-    }
-    .nav-scroll {
+    /* ---------- Link buttons ---------- */
+    .links { margin-top: 30px; display: flex; flex-direction: column; gap: 13px; }
+    .link {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 16px;
-      max-width: 640px;
-      margin: 0 auto;
-      scrollbar-width: none;
-    }
-    .nav-scroll::-webkit-scrollbar { display: none; }
-    .nav-scroll a {
-      flex: 0 0 auto;
+      align-items: center;
+      gap: 15px;
       text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--brown);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 8px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-      transition: .15s;
-    }
-    .nav-scroll a:hover { background: var(--cream-2); }
-
-    /* ---------- Sections ---------- */
-    main { padding: 8px 16px 0; }
-
-    .section { margin-top: 30px; scroll-margin-top: 66px; }
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .section-head .ico {
-      font-size: 22px;
-      width: 42px; height: 42px;
-      display: grid; place-items: center;
-      background: var(--cream-2);
-      border-radius: 12px;
-      flex: 0 0 auto;
-    }
-    .section-head h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 700;
-      color: var(--red);
-    }
-    .section-head p { font-size: 12.5px; color: var(--muted); }
-
-    /* ---------- Items ---------- */
-    .item {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      box-shadow: var(--shadow);
-    }
-    .item-body { flex: 1 1 auto; min-width: 0; }
-    .item-name {
-      font-weight: 700;
-      font-size: 16px;
       color: var(--ink);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 17px 18px;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .link:active { transform: scale(.98); }
+    .link .ic {
+      width: 46px; height: 46px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 24px;
+      background: var(--cream-2);
+    }
+    .link .tx { flex: 1 1 auto; text-align: left; }
+    .link .tx b { display: block; font-size: 16.5px; font-weight: 700; }
+    .link .tx small { color: var(--muted); font-size: 12.5px; }
+    .link .arrow { color: var(--muted); font-size: 20px; flex: 0 0 auto; }
+
+    .link.primary { background: var(--gold-soft); }
+    .link.primary .ic { background: rgba(122,30,18,.14); }
+    .link.primary .tx small { color: #7a5a18; }
+
+    /* ---------- Review CTA ---------- */
+    .review {
+      margin-top: 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .item-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-    .dots {
-      flex: 1 1 auto;
-      border-bottom: 2px dotted var(--line);
-      transform: translateY(-4px);
-      min-width: 14px;
-    }
-    .price {
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid var(--gold-soft);
+      border-radius: 14px;
+      padding: 15px 18px;
       font-weight: 700;
-      font-size: 16px;
-      color: var(--red);
-      white-space: nowrap;
-      flex: 0 0 auto;
+      font-size: 15px;
+      transition: background .12s ease;
     }
-    .tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 999px;
-    }
-    .tag.pop { background: #fbe4c9; color: #a35c12; }
-    .tag.spicy { background: #f7d7cf; color: #a8341f; }
-    .tag.new { background: #d9edd2; color: #35722a; }
+    .review:active { background: rgba(226,180,90,.15); }
+    .review .stars { color: var(--gold-soft); letter-spacing: 2px; }
 
     /* ---------- Footer ---------- */
-    footer {
-      text-align: center;
-      margin: 40px 16px 10px;
-      color: var(--muted);
-      font-size: 12.5px;
+    .foot {
+      margin-top: 26px;
+      color: rgba(251, 243, 230, .65);
+      font-size: 12px;
+      line-height: 1.7;
     }
-    footer .note {
-      background: var(--cream-2);
-      border: 1px dashed var(--gold);
-      border-radius: 12px;
-      padding: 14px;
-      color: var(--brown);
-      margin-bottom: 18px;
-      font-size: 13px;
-    }
-    footer .addr { line-height: 1.7; }
-    footer .addr a { color: var(--red); text-decoration: none; font-weight: 600; }
-
-    /* ---------- Bottom bar ---------- */
-    .callbar {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 30;
-      background: rgba(251, 243, 230, .95);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--line);
-      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    }
-    .callbar-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-    }
-    .callbar a {
-      flex: 1;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14.5px;
-      padding: 13px;
-      border-radius: 12px;
-      transition: .15s;
-    }
-    .btn-call { background: var(--red); color: var(--cream); }
-    .btn-call:active { background: var(--red-soft); }
-    .btn-map { background: #fff; color: var(--brown); border: 1px solid var(--line); }
-
-    @media (min-width: 500px) {
-      header h1 { font-size: 52px; }
-    }
+    .foot a { color: rgba(251, 243, 230, .85); text-decoration: none; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- ============ HEADER ============ -->
-    <header>
-      <span class="badge">Bitez · Bodrum</span>
-      <h1>Mahalle <span>Döner</span></h1>
-      <p class="tagline">Tavuk döner · Çıtır kanat · Çıtır burger</p>
-      <div class="header-meta">
-        <span>🕐 Her gün 11:00 – 00:00</span>
-        <span>📍 Bitez, Cami Sk.</span>
-      </div>
-    </header>
+  <main class="hub">
+    <div class="logo">🥙</div>
+    <h1 class="brand">Mahalle <span>Döner</span></h1>
+    <p class="sub">Bitez · Bodrum</p>
+    <div class="status"><span class="dot"></span> Her gün 11:00 – 00:00</div>
 
-    <!-- ============ NAV ============ -->
-    <nav>
-      <div class="nav-scroll">
-        <a href="#doner">Döner & Dürüm</a>
-        <a href="#kanat">Çıtır Kanat</a>
-        <a href="#burger">Çıtır Burger</a>
-        <a href="#icecekler">İçecekler</a>
-      </div>
+    <nav class="links">
+      <a class="link primary" href="menu.html">
+        <span class="ic">🍽️</span>
+        <span class="tx"><b>Menü</b><small>Ürünler ve fiyatlar</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://www.instagram.com/mahalle.doner/" target="_blank" rel="noopener">
+        <span class="ic">📷</span>
+        <span class="tx"><b>Instagram</b><small>@mahalle.doner</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://mahalledoner.com/" target="_blank" rel="noopener">
+        <span class="ic">🌐</span>
+        <span class="tx"><b>Web Sitesi</b><small>mahalledoner.com</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">
+        <span class="ic">📍</span>
+        <span class="tx"><b>Maps / Yol Tarifi</b><small>Bitez, Cami Sk. 13-11</small></span>
+        <span class="arrow">›</span>
+      </a>
     </nav>
 
-    <!-- ============ MENU ============ -->
-    <main>
+    <a class="review" href="https://www.google.com/maps/place//data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd!9m1!1b1" target="_blank" rel="noopener">
+      <span class="stars">★★★★★</span> Bizi Google'da Değerlendir
+    </a>
 
-      <!-- Döner & Dürüm -->
-      <section class="section" id="doner">
-        <div class="section-head">
-          <div class="ico">🌯</div>
-          <div>
-            <h2>Döner & Dürüm</h2>
-            <p>Günlük taze tavuk döner, ince lavaşta</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Tek Lavaş Dürüm</div>
-            <div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺150</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Çift Lavaş Dürüm</div>
-            <div class="item-desc">Çift kat lavaş, bol malzemeli</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺170</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">İçi 1.5 Tek Lavaş Dürüm <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">1.5 kat döner içi, tek lavaş</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺190</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Zurna Dürüm</div>
-            <div class="item-desc">Uzun dürüm, bol döner</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺200</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Duble Dürüm <span class="tag pop">Doyurucu</span></div>
-            <div class="item-desc">Ekstra bol döner içi</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺300</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">1 Porsiyon Döner</div>
-            <div class="item-desc">Tabakta tavuk döner, garnitür</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺250</div>
-        </div>
-      </section>
-
-      <!-- Çıtır Kanat -->
-      <section class="section" id="kanat">
-        <div class="section-head">
-          <div class="ico">🍗</div>
-          <div>
-            <h2>Çıtır Kanat</h2>
-            <p>Çıtır çıtır, taze kızarmış</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">10'lu Çıtır Kanat Menü <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">10 adet çıtır kanat, patates, sos</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺425</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">2 Kişilik Çıtır Kova</div>
-            <div class="item-desc">20 adet çıtır kanat, patates, soslar</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺800</div>
-        </div>
-      </section>
-
-      <!-- Çıtır Burger -->
-      <section class="section" id="burger">
-        <div class="section-head">
-          <div class="ico">🍔</div>
-          <div>
-            <h2>Çıtır Burger</h2>
-            <p>Çıtır tavuk göğsü, ev usulü sos</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Burger Menü</div>
-            <div class="item-desc">Çıtır burger, patates, içecek</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺350</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">2 Kişilik Burger Menü</div>
-            <div class="item-desc">2 burger, patates, içecekler</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺650</div>
-        </div>
-      </section>
-
-      <!-- İçecekler -->
-      <section class="section" id="icecekler">
-        <div class="section-head">
-          <div class="ico">🥤</div>
-          <div>
-            <h2>İçecekler</h2>
-            <p>Serinleten seçenekler</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Ayran</div>
-            <div class="item-desc">Köpüklü</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺—</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Kutu İçecek</div>
-            <div class="item-desc">Kola, fanta, gazoz</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺—</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Su</div>
-            <div class="item-desc">0.5 lt</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺—</div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- ============ FOOTER ============ -->
-    <footer>
-      <div class="note">
-        Tüm ürünlerimiz günlük taze hazırlanır. Fiyatlarımıza KDV dahildir.<br />
-        Çocuk menüsü, açık hava oturma alanı ve paket servis mevcuttur.
-      </div>
-      <p class="addr">
-        <strong>Mahalle Döner</strong><br />
-        Bitez, Cami Sk. 13-11, 48470 Bodrum / Muğla<br />
-        <a href="tel:+905331924831">0533 192 48 31</a>
-      </p>
-      <p style="margin-top:14px;">Afiyet olsun 🤍</p>
-    </footer>
-  </div>
-
-  <!-- ============ CALL BAR ============ -->
-  <div class="callbar">
-    <div class="callbar-inner">
-      <a class="btn-call" href="tel:+905331924831">📞 Sipariş / Ara</a>
-      <a class="btn-map" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">📍 Yol Tarifi</a>
-    </div>
-  </div>
+    <p class="foot">
+      Mahalle Döner · Bitez, Cami Sk. 13-11, Bodrum<br />
+      <a href="tel:+905331924831">0533 192 48 31</a>
+    </p>
+  </main>
 </body>
 </html>
