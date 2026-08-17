@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahalle Döner — Menü</title>
-  <meta name="description" content="Mahalle Döner dijital menüsü — dönerler, dürümler, iskender, porsiyonlar, içecekler ve tatlılar." />
+  <meta name="description" content="Mahalle Döner Bitez, Bodrum — tavuk döner dürüm, çıtır kanat ve çıtır burger menüsü." />
   <meta name="theme-color" content="#7a1e12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -224,6 +224,8 @@
       margin-bottom: 18px;
       font-size: 13px;
     }
+    footer .addr { line-height: 1.7; }
+    footer .addr a { color: var(--red); text-decoration: none; font-weight: 600; }
 
     /* ---------- Bottom bar ---------- */
     .callbar {
@@ -264,55 +266,42 @@
   <div class="wrap">
     <!-- ============ HEADER ============ -->
     <header>
-      <span class="badge">Ocakbaşı & Döner</span>
+      <span class="badge">Bitez · Bodrum</span>
       <h1>Mahalle <span>Döner</span></h1>
-      <p class="tagline">Odun ateşinde, günlük taze et ile</p>
+      <p class="tagline">Tavuk döner · Çıtır kanat · Çıtır burger</p>
       <div class="header-meta">
-        <span>🕐 11:00 – 23:00</span>
-        <span>📍 Merkez Mah.</span>
-        <span>⭐ 4.8</span>
+        <span>🕐 Her gün 11:00 – 00:00</span>
+        <span>📍 Bitez, Cami Sk.</span>
       </div>
     </header>
 
     <!-- ============ NAV ============ -->
     <nav>
       <div class="nav-scroll">
-        <a href="#donerler">Dönerler</a>
-        <a href="#durumler">Dürümler</a>
-        <a href="#iskender">İskender</a>
-        <a href="#porsiyon">Porsiyonlar</a>
-        <a href="#yan">Yan Ürünler</a>
+        <a href="#doner">Döner & Dürüm</a>
+        <a href="#kanat">Çıtır Kanat</a>
+        <a href="#burger">Çıtır Burger</a>
         <a href="#icecekler">İçecekler</a>
-        <a href="#tatlilar">Tatlılar</a>
       </div>
     </nav>
 
     <!-- ============ MENU ============ -->
     <main>
 
-      <!-- Dönerler -->
-      <section class="section" id="donerler">
+      <!-- Döner & Dürüm -->
+      <section class="section" id="doner">
         <div class="section-head">
-          <div class="ico">🥙</div>
+          <div class="ico">🌯</div>
           <div>
-            <h2>Dönerler</h2>
-            <p>Ekmek arası ve tabak seçenekleriyle</p>
+            <h2>Döner & Dürüm</h2>
+            <p>Günlük taze tavuk döner, ince lavaşta</p>
           </div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Et Döner (Ekmek Arası) <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">Odun ateşinde et döner, taze ekmek, marul, soğan</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺180</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Tavuk Döner (Ekmek Arası)</div>
-            <div class="item-desc">Marine tavuk döner, taze ekmek, soslar</div>
+            <div class="item-name">Tek Lavaş Dürüm</div>
+            <div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div>
           </div>
           <div class="dots"></div>
           <div class="price">₺150</div>
@@ -320,28 +309,17 @@
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Karışık Döner (Ekmek Arası)</div>
-            <div class="item-desc">Et + tavuk döner bir arada</div>
+            <div class="item-name">Çift Lavaş Dürüm</div>
+            <div class="item-desc">Çift kat lavaş, bol malzemeli</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺190</div>
-        </div>
-      </section>
-
-      <!-- Dürümler -->
-      <section class="section" id="durumler">
-        <div class="section-head">
-          <div class="ico">🌯</div>
-          <div>
-            <h2>Dürümler</h2>
-            <p>İnce lavaşta, közlenmiş sebzelerle</p>
-          </div>
+          <div class="price">₺170</div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Et Döner Dürüm <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">Lavaş, et döner, közlenmiş domates-biber</div>
+            <div class="item-name">İçi 1.5 Tek Lavaş Dürüm <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">1.5 kat döner içi, tek lavaş</div>
           </div>
           <div class="dots"></div>
           <div class="price">₺190</div>
@@ -349,125 +327,87 @@
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Tavuk Döner Dürüm</div>
-            <div class="item-desc">Lavaş, tavuk döner, patates, soslar</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺160</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Acılı Dürüm <span class="tag spicy">Acı</span></div>
-            <div class="item-desc">Et döner, acı ezme, közlenmiş sebze</div>
+            <div class="item-name">Zurna Dürüm</div>
+            <div class="item-desc">Uzun dürüm, bol döner</div>
           </div>
           <div class="dots"></div>
           <div class="price">₺200</div>
         </div>
-      </section>
 
-      <!-- İskender -->
-      <section class="section" id="iskender">
-        <div class="section-head">
-          <div class="ico">🍅</div>
-          <div>
-            <h2>İskender</h2>
-            <p>Tereyağı ve özel domates sos ile</p>
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Duble Dürüm <span class="tag pop">Doyurucu</span></div>
+            <div class="item-desc">Ekstra bol döner içi</div>
           </div>
+          <div class="dots"></div>
+          <div class="price">₺300</div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Klasik İskender <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">Pide üzeri et döner, tereyağı, domates sos, yoğurt</div>
+            <div class="item-name">1 Porsiyon Döner</div>
+            <div class="item-desc">Tabakta tavuk döner, garnitür</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺260</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Tavuk İskender</div>
-            <div class="item-desc">Pide üzeri tavuk döner, tereyağı, sos, yoğurt</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺230</div>
+          <div class="price">₺250</div>
         </div>
       </section>
 
-      <!-- Porsiyonlar -->
-      <section class="section" id="porsiyon">
+      <!-- Çıtır Kanat -->
+      <section class="section" id="kanat">
         <div class="section-head">
-          <div class="ico">🍽️</div>
+          <div class="ico">🍗</div>
           <div>
-            <h2>Porsiyonlar</h2>
-            <p>Pilav üstü ve tabak servisleri</p>
+            <h2>Çıtır Kanat</h2>
+            <p>Çıtır çıtır, taze kızarmış</p>
           </div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Pilav Üstü Et Döner</div>
-            <div class="item-desc">Tereyağlı pilav, et döner, garnitür</div>
+            <div class="item-name">10'lu Çıtır Kanat Menü <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">10 adet çıtır kanat, patates, sos</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺240</div>
+          <div class="price">₺425</div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Pilav Üstü Tavuk Döner</div>
-            <div class="item-desc">Tereyağlı pilav, tavuk döner, garnitür</div>
+            <div class="item-name">2 Kişilik Çıtır Kova</div>
+            <div class="item-desc">20 adet çıtır kanat, patates, soslar</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺210</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Porsiyon Et Döner (250 gr) <span class="tag new">Yeni</span></div>
-            <div class="item-desc">Tabakta et döner, garnitür, ekmek</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺320</div>
+          <div class="price">₺800</div>
         </div>
       </section>
 
-      <!-- Yan Ürünler -->
-      <section class="section" id="yan">
+      <!-- Çıtır Burger -->
+      <section class="section" id="burger">
         <div class="section-head">
-          <div class="ico">🥗</div>
+          <div class="ico">🍔</div>
           <div>
-            <h2>Yan Ürünler</h2>
-            <p>Menünü tamamla</p>
+            <h2>Çıtır Burger</h2>
+            <p>Çıtır tavuk göğsü, ev usulü sos</p>
           </div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Mevsim Salata</div>
-            <div class="item-desc">Domates, salatalık, marul, zeytinyağı</div>
+            <div class="item-name">Burger Menü</div>
+            <div class="item-desc">Çıtır burger, patates, içecek</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺70</div>
+          <div class="price">₺350</div>
         </div>
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Patates Kızartması</div>
-            <div class="item-desc">Çıtır patates, baharatlı</div>
+            <div class="item-name">2 Kişilik Burger Menü</div>
+            <div class="item-desc">2 burger, patates, içecekler</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺75</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Mercimek Çorbası</div>
-            <div class="item-desc">Günün çorbası, limon ile</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺60</div>
+          <div class="price">₺650</div>
         </div>
       </section>
 
@@ -483,20 +423,11 @@
 
         <div class="item">
           <div class="item-body">
-            <div class="item-name">Ayran <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">Ev yapımı, köpüklü</div>
+            <div class="item-name">Ayran</div>
+            <div class="item-desc">Köpüklü</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺35</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Şalgam</div>
-            <div class="item-desc">Acılı / acısız</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺40</div>
+          <div class="price">₺—</div>
         </div>
 
         <div class="item">
@@ -505,7 +436,7 @@
             <div class="item-desc">Kola, fanta, gazoz</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺45</div>
+          <div class="price">₺—</div>
         </div>
 
         <div class="item">
@@ -514,45 +445,7 @@
             <div class="item-desc">0.5 lt</div>
           </div>
           <div class="dots"></div>
-          <div class="price">₺15</div>
-        </div>
-      </section>
-
-      <!-- Tatlılar -->
-      <section class="section" id="tatlilar">
-        <div class="section-head">
-          <div class="ico">🍮</div>
-          <div>
-            <h2>Tatlılar</h2>
-            <p>Tatlı bir final</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Künefe <span class="tag pop">Popüler</span></div>
-            <div class="item-desc">Sıcak künefe, kaymak ile</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺140</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Sütlaç</div>
-            <div class="item-desc">Fırın sütlaç</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺90</div>
-        </div>
-
-        <div class="item">
-          <div class="item-body">
-            <div class="item-name">Baklava (2 dilim)</div>
-            <div class="item-desc">Antep fıstıklı</div>
-          </div>
-          <div class="dots"></div>
-          <div class="price">₺120</div>
+          <div class="price">₺—</div>
         </div>
       </section>
 
@@ -561,18 +454,23 @@
     <!-- ============ FOOTER ============ -->
     <footer>
       <div class="note">
-        Tüm ürünlerimiz günlük hazırlanır. Fiyatlarımıza KDV dahildir.<br />
-        Alerjen bilgisi için lütfen personelimize danışınız.
+        Tüm ürünlerimiz günlük taze hazırlanır. Fiyatlarımıza KDV dahildir.<br />
+        Çocuk menüsü, açık hava oturma alanı ve paket servis mevcuttur.
       </div>
-      <p><strong>Mahalle Döner</strong> · Afiyet olsun 🤍</p>
+      <p class="addr">
+        <strong>Mahalle Döner</strong><br />
+        Bitez, Cami Sk. 13-11, 48470 Bodrum / Muğla<br />
+        <a href="tel:+905331924831">0533 192 48 31</a>
+      </p>
+      <p style="margin-top:14px;">Afiyet olsun 🤍</p>
     </footer>
   </div>
 
   <!-- ============ CALL BAR ============ -->
   <div class="callbar">
     <div class="callbar-inner">
-      <a class="btn-call" href="tel:+900000000000">📞 Sipariş / Ara</a>
-      <a class="btn-map" href="https://maps.google.com/?q=Mahalle+Döner" target="_blank" rel="noopener">📍 Yol Tarifi</a>
+      <a class="btn-call" href="tel:+905331924831">📞 Sipariş / Ara</a>
+      <a class="btn-map" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">📍 Yol Tarifi</a>
     </div>
   </div>
 </body>
