@@ -1,8 +1,579 @@
 <!DOCTYPE html>
-<html>
-<head><title>Batuhan Dagdelen</title></head>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahalle Döner — Menü</title>
+  <meta name="description" content="Mahalle Döner dijital menüsü — dönerler, dürümler, iskender, porsiyonlar, içecekler ve tatlılar." />
+  <meta name="theme-color" content="#7a1e12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #7a1e12;
+      --red-soft: #9c2a1a;
+      --cream: #fbf3e6;
+      --cream-2: #f4e6cf;
+      --brown: #3a2417;
+      --gold: #c9922e;
+      --gold-soft: #e2b45a;
+      --ink: #2b1a10;
+      --muted: #8a6f57;
+      --card: #fffaf1;
+      --line: #e7d6ba;
+      --shadow: 0 8px 24px rgba(58, 36, 23, .12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% -10%, #fff8ec, transparent 55%),
+        var(--cream);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 90px;
+    }
+
+    .wrap { max-width: 640px; margin: 0 auto; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: relative;
+      background:
+        linear-gradient(160deg, var(--red) 0%, var(--red-soft) 100%);
+      color: var(--cream);
+      text-align: center;
+      padding: 46px 24px 54px;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 26px;
+      background:
+        radial-gradient(circle at 12px -6px, var(--cream) 12px, transparent 13px) repeat-x;
+      background-size: 26px 26px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      border: 1px solid rgba(226, 180, 90, .5);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: .5px;
+    }
+    header h1 span { color: var(--gold-soft); }
+    header .tagline {
+      margin-top: 10px;
+      font-size: 15px;
+      color: rgba(251, 243, 230, .82);
+    }
+    .header-meta {
+      margin-top: 18px;
+      display: flex;
+      gap: 8px 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(251, 243, 230, .9);
+    }
+    .header-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+    /* ---------- Sticky category nav ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(58,36,23,.05);
+    }
+    .nav-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .nav-scroll a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--brown);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: .15s;
+    }
+    .nav-scroll a:hover { background: var(--cream-2); }
+
+    /* ---------- Sections ---------- */
+    main { padding: 8px 16px 0; }
+
+    .section { margin-top: 30px; scroll-margin-top: 66px; }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-head .ico {
+      font-size: 22px;
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      background: var(--cream-2);
+      border-radius: 12px;
+      flex: 0 0 auto;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .section-head p { font-size: 12.5px; color: var(--muted); }
+
+    /* ---------- Items ---------- */
+    .item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+    }
+    .item-body { flex: 1 1 auto; min-width: 0; }
+    .item-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .item-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .dots {
+      flex: 1 1 auto;
+      border-bottom: 2px dotted var(--line);
+      transform: translateY(-4px);
+      min-width: 14px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--red);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .tag.pop { background: #fbe4c9; color: #a35c12; }
+    .tag.spicy { background: #f7d7cf; color: #a8341f; }
+    .tag.new { background: #d9edd2; color: #35722a; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      margin: 40px 16px 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    footer .note {
+      background: var(--cream-2);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      padding: 14px;
+      color: var(--brown);
+      margin-bottom: 18px;
+      font-size: 13px;
+    }
+
+    /* ---------- Bottom bar ---------- */
+    .callbar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 30;
+      background: rgba(251, 243, 230, .95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    }
+    .callbar-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .callbar a {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 13px;
+      border-radius: 12px;
+      transition: .15s;
+    }
+    .btn-call { background: var(--red); color: var(--cream); }
+    .btn-call:active { background: var(--red-soft); }
+    .btn-map { background: #fff; color: var(--brown); border: 1px solid var(--line); }
+
+    @media (min-width: 500px) {
+      header h1 { font-size: 52px; }
+    }
+  </style>
+</head>
 <body>
-<h1>Batuhan Dagdelen</h1>
-<p>Game Developer</p>
+  <div class="wrap">
+    <!-- ============ HEADER ============ -->
+    <header>
+      <span class="badge">Ocakbaşı & Döner</span>
+      <h1>Mahalle <span>Döner</span></h1>
+      <p class="tagline">Odun ateşinde, günlük taze et ile</p>
+      <div class="header-meta">
+        <span>🕐 11:00 – 23:00</span>
+        <span>📍 Merkez Mah.</span>
+        <span>⭐ 4.8</span>
+      </div>
+    </header>
+
+    <!-- ============ NAV ============ -->
+    <nav>
+      <div class="nav-scroll">
+        <a href="#donerler">Dönerler</a>
+        <a href="#durumler">Dürümler</a>
+        <a href="#iskender">İskender</a>
+        <a href="#porsiyon">Porsiyonlar</a>
+        <a href="#yan">Yan Ürünler</a>
+        <a href="#icecekler">İçecekler</a>
+        <a href="#tatlilar">Tatlılar</a>
+      </div>
+    </nav>
+
+    <!-- ============ MENU ============ -->
+    <main>
+
+      <!-- Dönerler -->
+      <section class="section" id="donerler">
+        <div class="section-head">
+          <div class="ico">🥙</div>
+          <div>
+            <h2>Dönerler</h2>
+            <p>Ekmek arası ve tabak seçenekleriyle</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Et Döner (Ekmek Arası) <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">Odun ateşinde et döner, taze ekmek, marul, soğan</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺180</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Tavuk Döner (Ekmek Arası)</div>
+            <div class="item-desc">Marine tavuk döner, taze ekmek, soslar</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺150</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Karışık Döner (Ekmek Arası)</div>
+            <div class="item-desc">Et + tavuk döner bir arada</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺190</div>
+        </div>
+      </section>
+
+      <!-- Dürümler -->
+      <section class="section" id="durumler">
+        <div class="section-head">
+          <div class="ico">🌯</div>
+          <div>
+            <h2>Dürümler</h2>
+            <p>İnce lavaşta, közlenmiş sebzelerle</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Et Döner Dürüm <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">Lavaş, et döner, közlenmiş domates-biber</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺190</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Tavuk Döner Dürüm</div>
+            <div class="item-desc">Lavaş, tavuk döner, patates, soslar</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺160</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Acılı Dürüm <span class="tag spicy">Acı</span></div>
+            <div class="item-desc">Et döner, acı ezme, közlenmiş sebze</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺200</div>
+        </div>
+      </section>
+
+      <!-- İskender -->
+      <section class="section" id="iskender">
+        <div class="section-head">
+          <div class="ico">🍅</div>
+          <div>
+            <h2>İskender</h2>
+            <p>Tereyağı ve özel domates sos ile</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Klasik İskender <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">Pide üzeri et döner, tereyağı, domates sos, yoğurt</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺260</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Tavuk İskender</div>
+            <div class="item-desc">Pide üzeri tavuk döner, tereyağı, sos, yoğurt</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺230</div>
+        </div>
+      </section>
+
+      <!-- Porsiyonlar -->
+      <section class="section" id="porsiyon">
+        <div class="section-head">
+          <div class="ico">🍽️</div>
+          <div>
+            <h2>Porsiyonlar</h2>
+            <p>Pilav üstü ve tabak servisleri</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Pilav Üstü Et Döner</div>
+            <div class="item-desc">Tereyağlı pilav, et döner, garnitür</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺240</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Pilav Üstü Tavuk Döner</div>
+            <div class="item-desc">Tereyağlı pilav, tavuk döner, garnitür</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺210</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Porsiyon Et Döner (250 gr) <span class="tag new">Yeni</span></div>
+            <div class="item-desc">Tabakta et döner, garnitür, ekmek</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺320</div>
+        </div>
+      </section>
+
+      <!-- Yan Ürünler -->
+      <section class="section" id="yan">
+        <div class="section-head">
+          <div class="ico">🥗</div>
+          <div>
+            <h2>Yan Ürünler</h2>
+            <p>Menünü tamamla</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Mevsim Salata</div>
+            <div class="item-desc">Domates, salatalık, marul, zeytinyağı</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺70</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Patates Kızartması</div>
+            <div class="item-desc">Çıtır patates, baharatlı</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺75</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Mercimek Çorbası</div>
+            <div class="item-desc">Günün çorbası, limon ile</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺60</div>
+        </div>
+      </section>
+
+      <!-- İçecekler -->
+      <section class="section" id="icecekler">
+        <div class="section-head">
+          <div class="ico">🥤</div>
+          <div>
+            <h2>İçecekler</h2>
+            <p>Serinleten seçenekler</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Ayran <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">Ev yapımı, köpüklü</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺35</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Şalgam</div>
+            <div class="item-desc">Acılı / acısız</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺40</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Kutu İçecek</div>
+            <div class="item-desc">Kola, fanta, gazoz</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺45</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Su</div>
+            <div class="item-desc">0.5 lt</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺15</div>
+        </div>
+      </section>
+
+      <!-- Tatlılar -->
+      <section class="section" id="tatlilar">
+        <div class="section-head">
+          <div class="ico">🍮</div>
+          <div>
+            <h2>Tatlılar</h2>
+            <p>Tatlı bir final</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Künefe <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">Sıcak künefe, kaymak ile</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺140</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Sütlaç</div>
+            <div class="item-desc">Fırın sütlaç</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺90</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Baklava (2 dilim)</div>
+            <div class="item-desc">Antep fıstıklı</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺120</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="note">
+        Tüm ürünlerimiz günlük hazırlanır. Fiyatlarımıza KDV dahildir.<br />
+        Alerjen bilgisi için lütfen personelimize danışınız.
+      </div>
+      <p><strong>Mahalle Döner</strong> · Afiyet olsun 🤍</p>
+    </footer>
+  </div>
+
+  <!-- ============ CALL BAR ============ -->
+  <div class="callbar">
+    <div class="callbar-inner">
+      <a class="btn-call" href="tel:+900000000000">📞 Sipariş / Ara</a>
+      <a class="btn-map" href="https://maps.google.com/?q=Mahalle+Döner" target="_blank" rel="noopener">📍 Yol Tarifi</a>
+    </div>
+  </div>
 </body>
 </html>
