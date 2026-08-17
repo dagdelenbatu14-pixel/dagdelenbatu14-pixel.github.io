@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahalle Döner</title>
   <meta name="description" content="Mahalle Döner Bitez, Bodrum — menü, Instagram, web sitesi, yol tarifi ve değerlendirme." />
-  <meta name="theme-color" content="#7a1e12" />
+  <meta name="theme-color" content="#5f160d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --red: #7a1e12;
+      --red-deep: #5f160d;
       --red-soft: #9c2a1a;
       --cream: #fbf3e6;
       --cream-2: #f4e6cf;
@@ -20,171 +21,244 @@
       --gold-soft: #e2b45a;
       --ink: #2b1a10;
       --muted: #8a6f57;
-      --card: #fffaf1;
-      --line: #e7d6ba;
-      --shadow: 0 10px 26px rgba(58, 36, 23, .14);
+      --card: #fffdf8;
+      --line: #ecdcc0;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--ink);
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 50% -8%, #9c2a1a 0%, #7a1e12 42%, #5f160d 100%);
+      background: var(--red-deep);
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .app { max-width: 480px; margin: 0 auto; position: relative; background: var(--cream); min-height: 100vh; box-shadow: 0 0 60px rgba(0,0,0,.35); }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      height: 46vh;
+      min-height: 320px;
+      max-height: 420px;
+      background-image:
+        linear-gradient(180deg, rgba(48,14,8,.28) 0%, rgba(60,17,10,.55) 55%, rgba(95,22,13,.96) 100%),
+        url('images/19231583_1785933237082.jpg');
+      background-size: cover;
+      background-position: center 42%;
       display: flex;
-      justify-content: center;
-      padding: 34px 20px 40px;
-    }
-
-    .hub { width: 100%; max-width: 440px; text-align: center; }
-
-    /* ---------- Brand ---------- */
-    .logo {
-      width: 92px; height: 92px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: var(--cream);
-      display: grid; place-items: center;
-      font-size: 46px;
-      box-shadow: 0 8px 22px rgba(0,0,0,.28);
-      border: 3px solid var(--gold-soft);
-    }
-    .brand {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 38px;
-      color: var(--cream);
-      line-height: 1.1;
-      letter-spacing: .5px;
-    }
-    .brand span { color: var(--gold-soft); }
-    .sub {
-      margin-top: 8px;
-      font-size: 14px;
-      color: rgba(251, 243, 230, .8);
-      letter-spacing: .3px;
-    }
-    .status {
-      margin-top: 14px;
-      display: inline-flex;
+      flex-direction: column;
+      justify-content: flex-end;
       align-items: center;
-      gap: 7px;
-      font-size: 12.5px;
-      color: rgba(251, 243, 230, .85);
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(226,180,90,.35);
-      padding: 6px 14px;
+      text-align: center;
+      padding: 0 24px 40px;
+      overflow: hidden;
+    }
+    .hero::before {
+      /* soft top glow / vignette */
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(120% 70% at 50% 0%, rgba(226,180,90,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11.5px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+      color: var(--gold-soft);
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(226,180,90,.45);
       border-radius: 999px;
+      padding: 6px 15px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(4px);
+      animation: fadeUp .7s .05s both;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #6ad07f; box-shadow: 0 0 0 3px rgba(106,208,127,.25); }
+    .badge .pin { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: .98;
+      color: #fff;
+      letter-spacing: .5px;
+      text-shadow: 0 4px 24px rgba(0,0,0,.5);
+      animation: fadeUp .7s .12s both;
+    }
+    .hero h1 span { color: var(--gold-soft); display: block; }
+    .hero .tagline {
+      margin-top: 12px;
+      font-size: 14.5px; font-weight: 500;
+      color: rgba(255,255,255,.9);
+      text-shadow: 0 2px 10px rgba(0,0,0,.4);
+      animation: fadeUp .7s .2s both;
+    }
 
-    /* ---------- Link buttons ---------- */
-    .links { margin-top: 30px; display: flex; flex-direction: column; gap: 13px; }
+    /* ---------- SHEET ---------- */
+    .sheet {
+      position: relative;
+      margin-top: -26px;
+      background: var(--cream);
+      border-radius: 28px 28px 0 0;
+      padding: 26px 20px 30px;
+      z-index: 2;
+    }
+    .sheet::before {
+      content: "";
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      width: 44px; height: 4px; border-radius: 999px; background: var(--line);
+    }
+
+    .status {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      font-size: 13px; font-weight: 600; color: var(--brown);
+      margin: 6px 0 22px;
+      animation: fadeUp .6s .28s both;
+    }
+    .status .live { display: inline-flex; align-items: center; gap: 6px; color: #2f8f4e; font-weight: 700; }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: #37b567; box-shadow: 0 0 0 0 rgba(55,181,103,.5); animation: pulse 2s infinite; }
+    .status .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+
+    /* ---------- LINKS ---------- */
+    .links { display: flex; flex-direction: column; gap: 12px; }
     .link {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
+      position: relative;
+      display: flex; align-items: center; gap: 15px;
+      text-decoration: none; color: var(--ink);
       background: var(--card);
-      color: var(--ink);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 16px;
-      padding: 17px 18px;
-      box-shadow: var(--shadow);
-      transition: transform .12s ease, box-shadow .12s ease;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 15px 16px;
+      box-shadow: 0 6px 18px rgba(58,36,23,.09);
+      overflow: hidden;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      animation: fadeUp .55s both;
     }
+    .link::after {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(var(--gold-soft), var(--gold));
+      opacity: 0; transition: opacity .16s ease;
+    }
+    .link:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(58,36,23,.16); border-color: #e0cba3; }
+    .link:hover::after { opacity: 1; }
     .link:active { transform: scale(.98); }
+    .links .link:nth-child(1) { animation-delay: .34s; }
+    .links .link:nth-child(2) { animation-delay: .40s; }
+    .links .link:nth-child(3) { animation-delay: .46s; }
+    .links .link:nth-child(4) { animation-delay: .52s; }
+
     .link .ic {
-      width: 46px; height: 46px;
-      flex: 0 0 auto;
-      border-radius: 12px;
-      display: grid; place-items: center;
-      font-size: 24px;
-      background: var(--cream-2);
-    }
-    .link .tx { flex: 1 1 auto; text-align: left; }
-    .link .tx b { display: block; font-size: 16.5px; font-weight: 700; }
-    .link .tx small { color: var(--muted); font-size: 12.5px; }
-    .link .arrow { color: var(--muted); font-size: 20px; flex: 0 0 auto; }
-
-    .link.primary { background: var(--gold-soft); }
-    .link.primary .ic { background: rgba(122,30,18,.14); }
-    .link.primary .tx small { color: #7a5a18; }
-
-    /* ---------- Review CTA ---------- */
-    .review {
-      margin-top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-decoration: none;
-      background: transparent;
-      color: var(--cream);
-      border: 1.5px solid var(--gold-soft);
+      width: 52px; height: 52px; flex: 0 0 auto;
       border-radius: 14px;
-      padding: 15px 18px;
-      font-weight: 700;
-      font-size: 15px;
-      transition: background .12s ease;
+      display: grid; place-items: center;
+      font-size: 26px;
+      background: radial-gradient(120% 120% at 30% 20%, #fff2dc, var(--cream-2));
+      border: 1px solid var(--line);
     }
-    .review:active { background: rgba(226,180,90,.15); }
-    .review .stars { color: var(--gold-soft); letter-spacing: 2px; }
+    .link.menu .ic { background: linear-gradient(140deg, var(--red-soft), var(--red)); border-color: transparent; }
+    .link .tx { flex: 1 1 auto; min-width: 0; }
+    .link .tx b { display: block; font-size: 16.5px; font-weight: 700; letter-spacing: .2px; }
+    .link .tx small { color: var(--muted); font-size: 12.5px; }
+    .link .arrow { color: #c7ac82; font-size: 26px; font-weight: 300; flex: 0 0 auto; transition: transform .16s ease; }
+    .link:hover .arrow { transform: translateX(3px); color: var(--gold); }
 
-    /* ---------- Footer ---------- */
-    .foot {
-      margin-top: 26px;
-      color: rgba(251, 243, 230, .65);
-      font-size: 12px;
-      line-height: 1.7;
+    /* ---------- REVIEW ---------- */
+    .review {
+      margin-top: 20px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      text-decoration: none;
+      background: linear-gradient(140deg, var(--red-soft), var(--red-deep));
+      color: #fff;
+      border-radius: 18px;
+      padding: 17px 18px;
+      box-shadow: 0 10px 24px rgba(95,22,13,.32);
+      transition: transform .16s ease, box-shadow .16s ease;
+      animation: fadeUp .55s .58s both;
     }
-    .foot a { color: rgba(251, 243, 230, .85); text-decoration: none; }
+    .review:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(95,22,13,.4); }
+    .review:active { transform: scale(.99); }
+    .review .stars { color: var(--gold-soft); letter-spacing: 4px; font-size: 19px; }
+    .review b { font-size: 15.5px; font-weight: 700; }
+    .review small { font-size: 11.5px; color: rgba(255,255,255,.7); }
+
+    /* ---------- FOOTER ---------- */
+    .foot {
+      margin-top: 26px; text-align: center;
+      color: var(--muted); font-size: 12px; line-height: 1.7;
+      animation: fadeUp .6s .64s both;
+    }
+    .foot .divider { width: 60px; height: 2px; background: var(--line); margin: 0 auto 16px; border-radius: 2px; }
+    .foot a { color: var(--red); text-decoration: none; font-weight: 700; }
+    .foot .name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--brown); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(55,181,103,.5); } 70% { box-shadow: 0 0 0 8px rgba(55,181,103,0); } 100% { box-shadow: 0 0 0 0 rgba(55,181,103,0); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
   </style>
 </head>
 <body>
-  <main class="hub">
-    <div class="logo">🥙</div>
-    <h1 class="brand">Mahalle <span>Döner</span></h1>
-    <p class="sub">Bitez · Bodrum</p>
-    <div class="status"><span class="dot"></span> Her gün 11:00 – 00:00</div>
+  <div class="app">
+    <!-- HERO -->
+    <header class="hero">
+      <span class="badge"><span class="pin"></span> Bitez · Bodrum</span>
+      <h1>Mahalle <span>Döner</span></h1>
+      <p class="tagline">Günlük taze tavuk döner · Odun ateşi lezzeti</p>
+    </header>
 
-    <nav class="links">
-      <a class="link primary" href="menu.html">
-        <span class="ic">🍽️</span>
-        <span class="tx"><b>Menü</b><small>Ürünler ve fiyatlar</small></span>
-        <span class="arrow">›</span>
+    <!-- SHEET -->
+    <main class="sheet">
+      <div class="status">
+        <span class="live"><span class="dot"></span> Açık</span>
+        <span class="sep"></span>
+        <span>Her gün 11:00 – 00:00</span>
+      </div>
+
+      <nav class="links">
+        <a class="link menu" href="menu.html">
+          <span class="ic">🍽️</span>
+          <span class="tx"><b>Menü</b><small>Ürünler, fiyatlar ve fotoğraflar</small></span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a class="link" href="https://www.instagram.com/mahalle.doner/" target="_blank" rel="noopener">
+          <span class="ic">📸</span>
+          <span class="tx"><b>Instagram</b><small>@mahalle.doner</small></span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a class="link" href="https://mahalledoner.com/" target="_blank" rel="noopener">
+          <span class="ic">🌐</span>
+          <span class="tx"><b>Web Sitesi</b><small>mahalledoner.com</small></span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a class="link" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">
+          <span class="ic">📍</span>
+          <span class="tx"><b>Yol Tarifi</b><small>Bitez, Cami Sk. 13-11</small></span>
+          <span class="arrow">›</span>
+        </a>
+      </nav>
+
+      <a class="review" href="https://www.google.com/maps/place//data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd!9m1!1b1" target="_blank" rel="noopener">
+        <span class="stars">★★★★★</span>
+        <b>Bizi Google'da Değerlendir</b>
+        <small>Deneyimini paylaş, bize destek ol</small>
       </a>
 
-      <a class="link" href="https://www.instagram.com/mahalle.doner/" target="_blank" rel="noopener">
-        <span class="ic">📷</span>
-        <span class="tx"><b>Instagram</b><small>@mahalle.doner</small></span>
-        <span class="arrow">›</span>
-      </a>
-
-      <a class="link" href="https://mahalledoner.com/" target="_blank" rel="noopener">
-        <span class="ic">🌐</span>
-        <span class="tx"><b>Web Sitesi</b><small>mahalledoner.com</small></span>
-        <span class="arrow">›</span>
-      </a>
-
-      <a class="link" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">
-        <span class="ic">📍</span>
-        <span class="tx"><b>Maps / Yol Tarifi</b><small>Bitez, Cami Sk. 13-11</small></span>
-        <span class="arrow">›</span>
-      </a>
-    </nav>
-
-    <a class="review" href="https://www.google.com/maps/place//data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd!9m1!1b1" target="_blank" rel="noopener">
-      <span class="stars">★★★★★</span> Bizi Google'da Değerlendir
-    </a>
-
-    <p class="foot">
-      Mahalle Döner · Bitez, Cami Sk. 13-11, Bodrum<br />
-      <a href="tel:+905331924831">0533 192 48 31</a>
-    </p>
-  </main>
+      <div class="foot">
+        <div class="divider"></div>
+        <div class="name">Mahalle Döner</div>
+        Bitez, Cami Sk. 13-11, Bodrum / Muğla<br />
+        <a href="tel:+905331924831">0533 192 48 31</a>
+        <div style="margin-top:12px;">Afiyet olsun 🤍</div>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
