@@ -5,24 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahalle Döner</title>
   <meta name="description" content="Mahalle Döner Bitez, Bodrum — menü, Instagram, web sitesi, yol tarifi ve değerlendirme." />
-  <meta name="theme-color" content="#5f160d" />
+  <meta name="theme-color" content="#1a0d08" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --red: #7a1e12;
+      --gold: #e2b45a;
+      --gold-deep: #c9922e;
+      --cream: #f7ecdc;
+      --red: #9c2a1a;
       --red-deep: #5f160d;
-      --red-soft: #9c2a1a;
-      --cream: #fbf3e6;
-      --cream-2: #f4e6cf;
-      --brown: #3a2417;
-      --gold: #c9922e;
-      --gold-soft: #e2b45a;
-      --ink: #2b1a10;
-      --muted: #8a6f57;
-      --card: #fffdf8;
-      --line: #ecdcc0;
+      --ink: #1a0d08;
+      --glass: rgba(255,255,255,.085);
+      --glass-brd: rgba(255,255,255,.16);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,240 +26,227 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--ink);
-      background: var(--red-deep);
+      color: var(--cream);
+      background: var(--ink);
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .app { max-width: 480px; margin: 0 auto; position: relative; background: var(--cream); min-height: 100vh; box-shadow: 0 0 60px rgba(0,0,0,.35); }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      position: relative;
-      height: 46vh;
-      min-height: 320px;
-      max-height: 420px;
-      background-image:
-        linear-gradient(180deg, rgba(48,14,8,.28) 0%, rgba(60,17,10,.55) 55%, rgba(95,22,13,.96) 100%),
-        url('images/19231583_1785933237082.jpg');
-      background-size: cover;
-      background-position: center 42%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      text-align: center;
-      padding: 0 24px 40px;
-      overflow: hidden;
+    /* ---------- Full-screen photo background ---------- */
+    .bg {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(.52) saturate(1.12) contrast(1.02);
+      transform-origin: center;
+      animation: kenburns 34s ease-in-out infinite alternate;
     }
-    .hero::before {
-      /* soft top glow / vignette */
-      content: "";
-      position: absolute; inset: 0;
-      background: radial-gradient(120% 70% at 50% 0%, rgba(226,180,90,.18), transparent 60%);
-      pointer-events: none;
+    .scrim {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(110% 60% at 50% 0%, rgba(226,180,90,.16), transparent 52%),
+        linear-gradient(180deg, rgba(26,13,8,.35) 0%, rgba(26,13,8,.6) 40%, rgba(45,12,7,.9) 100%);
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: -1; opacity: .5; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
+    }
+
+    /* ---------- Layout ---------- */
+    .app {
+      position: relative; z-index: 1;
+      max-width: 460px; margin: 0 auto;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 46px 22px 34px;
+    }
+
+    /* ---------- Brand ---------- */
+    .brand { text-align: center; margin-bottom: 26px; }
+    .crest {
+      width: 74px; height: 74px; margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 34px;
+      background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(226,180,90,.55);
+      box-shadow: 0 8px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.15);
+      backdrop-filter: blur(6px);
+      animation: fadeUp .8s .02s both;
     }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11.5px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
-      color: var(--gold-soft);
-      background: rgba(0,0,0,.28);
-      border: 1px solid rgba(226,180,90,.45);
-      border-radius: 999px;
-      padding: 6px 15px;
-      margin-bottom: 14px;
-      backdrop-filter: blur(4px);
-      animation: fadeUp .7s .05s both;
+      font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+      animation: fadeUp .8s .08s both;
     }
-    .badge .pin { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); }
-    .hero h1 {
+    .badge .ln { width: 22px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .badge .ln.r { background: linear-gradient(90deg, var(--gold), transparent); }
+    .brand h1 {
       font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      font-size: 52px;
-      line-height: .98;
-      color: #fff;
-      letter-spacing: .5px;
-      text-shadow: 0 4px 24px rgba(0,0,0,.5);
-      animation: fadeUp .7s .12s both;
+      font-weight: 900; font-size: 50px; line-height: .96;
+      color: #fff; letter-spacing: .5px;
+      text-shadow: 0 6px 30px rgba(0,0,0,.6);
+      animation: fadeUp .8s .14s both;
     }
-    .hero h1 span { color: var(--gold-soft); display: block; }
-    .hero .tagline {
-      margin-top: 12px;
-      font-size: 14.5px; font-weight: 500;
-      color: rgba(255,255,255,.9);
-      text-shadow: 0 2px 10px rgba(0,0,0,.4);
-      animation: fadeUp .7s .2s both;
+    .brand h1 span { color: var(--gold); display: block; }
+    .brand .tagline {
+      margin-top: 13px; font-size: 14px; font-weight: 500;
+      color: rgba(247,236,220,.82);
+      text-shadow: 0 2px 12px rgba(0,0,0,.5);
+      animation: fadeUp .8s .22s both;
     }
-
-    /* ---------- SHEET ---------- */
-    .sheet {
-      position: relative;
-      margin-top: -26px;
-      background: var(--cream);
-      border-radius: 28px 28px 0 0;
-      padding: 26px 20px 30px;
-      z-index: 2;
-    }
-    .sheet::before {
-      content: "";
-      position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-      width: 44px; height: 4px; border-radius: 999px; background: var(--line);
-    }
-
     .status {
-      display: flex; align-items: center; justify-content: center; gap: 9px;
-      font-size: 13px; font-weight: 600; color: var(--brown);
-      margin: 6px 0 22px;
-      animation: fadeUp .6s .28s both;
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 16px; padding: 7px 15px;
+      font-size: 12.5px; font-weight: 600;
+      background: var(--glass); border: 1px solid var(--glass-brd);
+      border-radius: 999px;
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      animation: fadeUp .8s .28s both;
     }
-    .status .live { display: inline-flex; align-items: center; gap: 6px; color: #2f8f4e; font-weight: 700; }
-    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: #37b567; box-shadow: 0 0 0 0 rgba(55,181,103,.5); animation: pulse 2s infinite; }
-    .status .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: #46d67d; box-shadow: 0 0 0 0 rgba(70,214,125,.5); animation: pulse 2s infinite; }
+    .status .open { color: #7ff0a6; font-weight: 700; }
+    .status .sep { opacity: .4; }
 
-    /* ---------- LINKS ---------- */
+    /* ---------- Glass links ---------- */
     .links { display: flex; flex-direction: column; gap: 12px; }
     .link {
-      position: relative;
-      display: flex; align-items: center; gap: 15px;
-      text-decoration: none; color: var(--ink);
-      background: var(--card);
-      border: 1px solid var(--line);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none; color: var(--cream);
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
       border-radius: 18px;
-      padding: 15px 16px;
-      box-shadow: 0 6px 18px rgba(58,36,23,.09);
-      overflow: hidden;
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-      animation: fadeUp .55s both;
+      padding: 14px 15px;
+      -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3);
+      box-shadow: 0 10px 34px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.12);
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+      animation: fadeUp .6s both;
     }
     .link::after {
-      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-      background: linear-gradient(var(--gold-soft), var(--gold));
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(var(--gold), var(--gold-deep));
       opacity: 0; transition: opacity .16s ease;
     }
-    .link:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(58,36,23,.16); border-color: #e0cba3; }
+    .link:hover { transform: translateY(-3px); background: rgba(255,255,255,.13); border-color: rgba(226,180,90,.4); }
     .link:hover::after { opacity: 1; }
-    .link:active { transform: scale(.98); }
-    .links .link:nth-child(1) { animation-delay: .34s; }
-    .links .link:nth-child(2) { animation-delay: .40s; }
-    .links .link:nth-child(3) { animation-delay: .46s; }
-    .links .link:nth-child(4) { animation-delay: .52s; }
+    .link:active { transform: scale(.985); }
+    .links .link:nth-child(1){ animation-delay:.34s } .links .link:nth-child(2){ animation-delay:.4s }
+    .links .link:nth-child(3){ animation-delay:.46s } .links .link:nth-child(4){ animation-delay:.52s }
 
     .link .ic {
-      width: 52px; height: 52px; flex: 0 0 auto;
-      border-radius: 14px;
-      display: grid; place-items: center;
-      font-size: 25px;
-      background: radial-gradient(130% 130% at 32% 22%, #fffaf0, #f0dfbe);
-      border: 1px solid #e6d1a6;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,.9), inset 0 -3px 6px rgba(185,126,31,.14), 0 3px 8px rgba(122,30,18,.08);
+      width: 50px; height: 50px; flex: 0 0 auto;
+      border-radius: 14px; display: grid; place-items: center; font-size: 24px;
+      background: rgba(226,180,90,.15);
+      border: 1px solid rgba(226,180,90,.32);
     }
     .link.menu .ic {
-      background: linear-gradient(140deg, #b23018, var(--red) 55%, var(--red-deep));
-      border-color: transparent;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 4px 10px rgba(95,22,13,.4);
+      background: linear-gradient(140deg, var(--red), var(--red-deep));
+      border-color: rgba(226,180,90,.3);
+      box-shadow: 0 4px 14px rgba(95,22,13,.5);
     }
     .link .tx { flex: 1 1 auto; min-width: 0; }
-    .link .tx b { display: block; font-size: 16.5px; font-weight: 700; letter-spacing: .2px; }
-    .link .tx small { color: var(--muted); font-size: 12.5px; }
-    .link .arrow { color: #c7ac82; font-size: 26px; font-weight: 300; flex: 0 0 auto; transition: transform .16s ease; }
+    .link .tx b { display: block; font-size: 16.5px; font-weight: 700; color: #fff; }
+    .link .tx small { color: rgba(247,236,220,.62); font-size: 12.5px; }
+    .link .arrow { color: rgba(226,180,90,.7); font-size: 24px; font-weight: 300; transition: transform .16s ease; }
     .link:hover .arrow { transform: translateX(3px); color: var(--gold); }
 
-    /* ---------- REVIEW ---------- */
+    /* ---------- Review ---------- */
     .review {
-      margin-top: 20px;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      margin-top: 18px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
       text-decoration: none;
-      background: linear-gradient(140deg, var(--red-soft), var(--red-deep));
-      color: #fff;
-      border-radius: 18px;
-      padding: 17px 18px;
-      box-shadow: 0 10px 24px rgba(95,22,13,.32);
+      background: linear-gradient(135deg, #ecc978, var(--gold-deep));
+      color: #3a2410;
+      border-radius: 18px; padding: 15px 18px;
+      box-shadow: 0 12px 30px rgba(201,146,46,.4), inset 0 1px 0 rgba(255,255,255,.5);
       transition: transform .16s ease, box-shadow .16s ease;
-      animation: fadeUp .55s .58s both;
+      animation: fadeUp .6s .58s both;
     }
-    .review:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(95,22,13,.4); }
+    .review:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(201,146,46,.5); }
     .review:active { transform: scale(.99); }
-    .review .stars { color: var(--gold-soft); letter-spacing: 4px; font-size: 19px; }
-    .review b { font-size: 15.5px; font-weight: 700; }
-    .review small { font-size: 11.5px; color: rgba(255,255,255,.7); }
+    .review .stars { letter-spacing: 4px; font-size: 18px; color: #7a4e12; }
+    .review b { font-size: 15.5px; font-weight: 800; }
+    .review small { font-size: 11.5px; color: rgba(58,36,16,.7); font-weight: 600; }
 
-    /* ---------- FOOTER ---------- */
+    /* ---------- Footer ---------- */
     .foot {
-      margin-top: 26px; text-align: center;
-      color: var(--muted); font-size: 12px; line-height: 1.7;
-      animation: fadeUp .6s .64s both;
+      margin-top: 24px; text-align: center;
+      color: rgba(247,236,220,.6); font-size: 12px; line-height: 1.7;
+      animation: fadeUp .7s .64s both;
     }
-    .foot .divider { width: 60px; height: 2px; background: var(--line); margin: 0 auto 16px; border-radius: 2px; }
-    .foot a { color: var(--red); text-decoration: none; font-weight: 700; }
-    .foot .name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--brown); }
+    .foot .divider { width: 50px; height: 1px; background: rgba(226,180,90,.5); margin: 0 auto 14px; }
+    .foot a { color: var(--gold); text-decoration: none; font-weight: 700; }
+    .foot .name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14.5px; color: #fff; }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(55,181,103,.5); } 70% { box-shadow: 0 0 0 8px rgba(55,181,103,0); } 100% { box-shadow: 0 0 0 0 rgba(55,181,103,0); } }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; }
-    }
+    @keyframes kenburns { from { transform: scale(1) translateY(0); } to { transform: scale(1.14) translateY(-2%); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(70,214,125,.5); } 70% { box-shadow: 0 0 0 9px rgba(70,214,125,0); } 100% { box-shadow: 0 0 0 0 rgba(70,214,125,0); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 </head>
 <body>
+  <img class="bg" src="images/19231583_1785933237082.jpg" alt="" aria-hidden="true" />
+  <div class="scrim"></div>
+  <div class="grain"></div>
+
   <div class="app">
-    <!-- HERO -->
-    <header class="hero">
-      <span class="badge"><span class="pin"></span> Bitez · Bodrum</span>
+    <div class="brand">
+      <div class="crest">🥙</div>
+      <div class="badge"><span class="ln"></span> Bitez · Bodrum <span class="ln r"></span></div>
       <h1>Mahalle <span>Döner</span></h1>
       <p class="tagline">Günlük taze tavuk döner · Odun ateşi lezzeti</p>
-    </header>
-
-    <!-- SHEET -->
-    <main class="sheet">
       <div class="status">
-        <span class="live"><span class="dot"></span> Açık</span>
-        <span class="sep"></span>
+        <span class="open"><span class="dot"></span> Açık</span>
+        <span class="sep">·</span>
         <span>Her gün 11:00 – 00:00</span>
       </div>
+    </div>
 
-      <nav class="links">
-        <a class="link menu" href="menu.html">
-          <span class="ic">🍽️</span>
-          <span class="tx"><b>Menü</b><small>Ürünler, fiyatlar ve fotoğraflar</small></span>
-          <span class="arrow">›</span>
-        </a>
-
-        <a class="link" href="https://www.instagram.com/mahalle.doner/" target="_blank" rel="noopener">
-          <span class="ic">📸</span>
-          <span class="tx"><b>Instagram</b><small>@mahalle.doner</small></span>
-          <span class="arrow">›</span>
-        </a>
-
-        <a class="link" href="https://mahalledoner.com/" target="_blank" rel="noopener">
-          <span class="ic">🌐</span>
-          <span class="tx"><b>Web Sitesi</b><small>mahalledoner.com</small></span>
-          <span class="arrow">›</span>
-        </a>
-
-        <a class="link" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">
-          <span class="ic">📍</span>
-          <span class="tx"><b>Yol Tarifi</b><small>Bitez, Cami Sk. 13-11</small></span>
-          <span class="arrow">›</span>
-        </a>
-      </nav>
-
-      <a class="review" href="https://www.google.com/maps/place//data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd!9m1!1b1" target="_blank" rel="noopener">
-        <span class="stars">★★★★★</span>
-        <b>Bizi Google'da Değerlendir</b>
-        <small>Deneyimini paylaş, bize destek ol</small>
+    <nav class="links">
+      <a class="link menu" href="menu.html">
+        <span class="ic">🍽️</span>
+        <span class="tx"><b>Menü</b><small>Ürünler, fiyatlar ve fotoğraflar</small></span>
+        <span class="arrow">›</span>
       </a>
 
-      <div class="foot">
-        <div class="divider"></div>
-        <div class="name">Mahalle Döner</div>
-        Bitez, Cami Sk. 13-11, Bodrum / Muğla<br />
-        <a href="tel:+905331924831">0533 192 48 31</a>
-        <div style="margin-top:12px;">Afiyet olsun 🤍</div>
-      </div>
-    </main>
+      <a class="link" href="https://www.instagram.com/mahalle.doner/" target="_blank" rel="noopener">
+        <span class="ic">📸</span>
+        <span class="tx"><b>Instagram</b><small>@mahalle.doner</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://mahalledoner.com/" target="_blank" rel="noopener">
+        <span class="ic">🌐</span>
+        <span class="tx"><b>Web Sitesi</b><small>mahalledoner.com</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">
+        <span class="ic">📍</span>
+        <span class="tx"><b>Yol Tarifi</b><small>Bitez, Cami Sk. 13-11</small></span>
+        <span class="arrow">›</span>
+      </a>
+    </nav>
+
+    <a class="review" href="https://www.google.com/maps/place//data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd!9m1!1b1" target="_blank" rel="noopener">
+      <span class="stars">★★★★★</span>
+      <b>Bizi Google'da Değerlendir</b>
+      <small>Deneyimini paylaş, bize destek ol</small>
+    </a>
+
+    <div class="foot">
+      <div class="divider"></div>
+      <div class="name">Mahalle Döner</div>
+      Bitez, Cami Sk. 13-11, Bodrum / Muğla<br />
+      <a href="tel:+905331924831">0533 192 48 31</a>
+      <div style="margin-top:12px;">Afiyet olsun 🤍</div>
+    </div>
   </div>
 </body>
 </html>
