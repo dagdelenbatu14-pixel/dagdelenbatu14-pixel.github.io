@@ -5,335 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahalle Döner — Menü</title>
   <meta name="description" content="Mahalle Döner Bitez, Bodrum — tavuk döner dürüm, porsiyon, burger ve içecek menüsü." />
-  <meta name="theme-color" content="#7a1e12" />
+  <meta name="theme-color" content="#1a0d08" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --red: #7a1e12;
-      --red-soft: #9c2a1a;
-      --cream: #fbf3e6;
-      --cream-2: #f4e6cf;
-      --brown: #3a2417;
-      --gold: #c9922e;
-      --gold-soft: #e2b45a;
-      --ink: #2b1a10;
-      --muted: #8a6f57;
-      --card: #fffaf1;
-      --line: #e7d6ba;
-      --shadow: 0 8px 24px rgba(58, 36, 23, .12);
+      --gold: #e2b45a;
+      --gold-deep: #c9922e;
+      --cream: #f7ecdc;
+      --muted: rgba(247,236,220,.6);
+      --red: #9c2a1a;
+      --red-deep: #5f160d;
+      --ink: #1a0d08;
+      --glass: rgba(255,255,255,.06);
+      --glass-2: rgba(255,255,255,.1);
+      --glass-brd: rgba(255,255,255,.13);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 20% -10%, #fff8ec, transparent 55%),
-        var(--cream);
-      line-height: 1.5;
+      color: var(--cream);
+      background: var(--ink);
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 90px;
+      line-height: 1.5;
+      padding-bottom: 92px;
+      overflow-x: hidden;
     }
 
-    .wrap { max-width: 640px; margin: 0 auto; }
+    /* ---------- Fixed photo background ---------- */
+    .bg {
+      position: fixed; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -2;
+      filter: brightness(.4) saturate(1.1);
+    }
+    .scrim {
+      position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, rgba(26,13,8,.7) 0%, rgba(26,13,8,.9) 60%, rgba(26,13,8,.97) 100%);
+    }
+
+    .wrap { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
 
     /* ---------- Header ---------- */
     header {
       position: relative;
-      background-image:
-        linear-gradient(170deg, rgba(60,17,10,.62) 0%, rgba(95,22,13,.94) 100%),
-        url('images/19231577_1779095186394.jpg');
-      background-size: cover;
-      background-position: center 40%;
-      color: var(--cream);
       text-align: center;
-      padding: 54px 24px 60px;
+      padding: 52px 24px 30px;
       overflow: hidden;
     }
-    header::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: -1px;
-      height: 26px;
-      background:
-        radial-gradient(circle at 12px -6px, var(--cream) 12px, transparent 13px) repeat-x;
-      background-size: 26px 26px;
-    }
-    header h1, header .tagline, header .badge, header .header-meta { position: relative; text-shadow: 0 3px 16px rgba(0,0,0,.45); }
     .back-link {
-      position: absolute;
-      top: 16px; left: 16px;
-      z-index: 2;
+      position: absolute; top: 16px; left: 16px; z-index: 2;
       color: var(--cream);
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(226,180,90,.4);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 7px 13px;
-      border-radius: 999px;
+      background: var(--glass); border: 1px solid var(--glass-brd);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      text-decoration: none; font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 999px;
+      transition: background .15s ease;
     }
+    .back-link:hover { background: var(--glass-2); }
     .badge {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      border: 1px solid rgba(226, 180, 90, .5);
-      border-radius: 999px;
-      padding: 5px 14px;
-      margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 700;
+      color: var(--gold); margin-bottom: 12px;
     }
+    .badge .ln { width: 20px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .badge .ln.r { background: linear-gradient(90deg, var(--gold), transparent); }
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 44px;
-      line-height: 1.05;
-      letter-spacing: .5px;
+      font-family: 'Playfair Display', serif; font-weight: 900; font-size: 44px; line-height: 1;
+      color: #fff; letter-spacing: .5px; text-shadow: 0 5px 26px rgba(0,0,0,.6);
     }
-    header h1 span { color: var(--gold-soft); }
-    header .tagline {
-      margin-top: 10px;
-      font-size: 15px;
-      color: rgba(251, 243, 230, .82);
-    }
+    header h1 span { color: var(--gold); }
+    header .tagline { margin-top: 11px; font-size: 14px; color: rgba(247,236,220,.8); }
     .header-meta {
-      margin-top: 18px;
-      display: flex;
-      gap: 8px 18px;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: rgba(251, 243, 230, .9);
+      margin-top: 16px; display: flex; gap: 8px 16px; justify-content: center; flex-wrap: wrap;
+      font-size: 12.5px; color: rgba(247,236,220,.78);
     }
     .header-meta span { display: inline-flex; align-items: center; gap: 6px; }
 
-    /* ---------- Sticky category nav ---------- */
+    /* ---------- Sticky nav ---------- */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: var(--cream);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 2px 10px rgba(58,36,23,.05);
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(26,13,8,.72);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--glass-brd);
     }
     .nav-scroll {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 16px;
-      max-width: 640px;
-      margin: 0 auto;
-      scrollbar-width: none;
+      display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px;
+      max-width: 640px; margin: 0 auto; scrollbar-width: none;
     }
     .nav-scroll::-webkit-scrollbar { display: none; }
     .nav-scroll a {
-      flex: 0 0 auto;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--brown);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 8px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-      transition: .15s;
+      flex: 0 0 auto; text-decoration: none; font-size: 13.5px; font-weight: 600;
+      color: var(--cream); background: var(--glass); border: 1px solid var(--glass-brd);
+      padding: 8px 15px; border-radius: 999px; white-space: nowrap; transition: .15s;
     }
-    .nav-scroll a:hover { background: var(--cream-2); }
+    .nav-scroll a:hover { background: var(--glass-2); border-color: rgba(226,180,90,.4); color: #fff; }
 
     /* ---------- Sections ---------- */
     main { padding: 8px 16px 0; }
-
-    .section { margin-top: 30px; scroll-margin-top: 66px; }
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
+    .section { margin-top: 30px; scroll-margin-top: 64px; animation: fadeUp .55s both; }
+    .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .section-head .ico {
-      font-size: 22px;
-      width: 42px; height: 42px;
-      display: grid; place-items: center;
-      background: var(--cream-2);
-      border-radius: 12px;
-      flex: 0 0 auto;
+      font-size: 21px; width: 44px; height: 44px; display: grid; place-items: center;
+      background: rgba(226,180,90,.14); border: 1px solid rgba(226,180,90,.3);
+      border-radius: 13px; flex: 0 0 auto;
     }
     .section-head h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 700;
-      color: var(--red);
+      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #fff;
     }
     .section-head p { font-size: 12.5px; color: var(--muted); }
 
     /* ---------- Items ---------- */
     .item {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px 14px;
-      margin-bottom: 11px;
-      box-shadow: var(--shadow);
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      display: flex; align-items: center; gap: 13px;
+      background: var(--glass); border: 1px solid var(--glass-brd);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 11px 13px; margin-bottom: 11px;
+      box-shadow: 0 8px 26px rgba(0,0,0,.28);
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
     }
-    .item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 30px rgba(58,36,23,.18);
-      border-color: #e2cfa8;
-    }
+    .item:hover { transform: translateY(-3px); background: var(--glass-2); border-color: rgba(226,180,90,.35); }
     .item-thumb {
-      width: 76px; height: 76px;
-      flex: 0 0 auto;
-      border-radius: 13px;
-      object-fit: cover;
-      background: var(--cream-2);
-      border: 1px solid var(--line);
-      transition: transform .3s ease;
+      width: 78px; height: 78px; flex: 0 0 auto; border-radius: 13px;
+      object-fit: cover; border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 4px 12px rgba(0,0,0,.35); transition: transform .3s ease;
     }
-    .item:hover .item-thumb { transform: scale(1.05); }
-    .item-main {
-      flex: 1 1 auto;
-      min-width: 0;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
+    .item:hover .item-thumb { transform: scale(1.06); }
+    .item-main { flex: 1 1 auto; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
     .item-body { flex: 1 1 auto; min-width: 0; }
     .item-name {
-      font-weight: 700;
-      font-size: 15.5px;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      font-weight: 700; font-size: 15.5px; color: #fff;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     }
-    .item-desc {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-    .dots {
-      flex: 1 1 auto;
-      border-bottom: 2px dotted var(--line);
-      min-width: 12px;
-      align-self: flex-end;
-      margin-bottom: 5px;
-    }
-    .price {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--red);
-      white-space: nowrap;
-      flex: 0 0 auto;
-      align-self: center;
-    }
+    .item-desc { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+    .dots { flex: 1 1 auto; border-bottom: 1px dotted rgba(255,255,255,.2); min-width: 12px; align-self: flex-end; margin-bottom: 5px; }
+    .price { font-weight: 800; font-size: 16px; color: var(--gold); white-space: nowrap; flex: 0 0 auto; align-self: center; }
+
     .tag {
       display: inline-flex; align-items: center; gap: 3px;
-      font-size: 9.5px;
-      font-weight: 800;
-      letter-spacing: .7px;
-      text-transform: uppercase;
-      padding: 3px 9px 3px 8px;
-      border-radius: 999px;
-      color: #fff;
-      box-shadow: 0 2px 7px rgba(0,0,0,.16);
+      font-size: 9.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase;
+      padding: 3px 9px 3px 8px; border-radius: 999px; color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
     }
     .tag::before { font-size: 10px; line-height: 1; }
-    /* Popüler / Doyurucu — altın varak rozet */
     .tag.pop {
       background: linear-gradient(135deg, #f6cf7d 0%, #dca43a 48%, #b97e1f 100%);
-      color: #4a2c08;
-      box-shadow: 0 2px 9px rgba(185,126,31,.45), inset 0 1px 0 rgba(255,255,255,.55);
+      color: #3a2408; box-shadow: 0 2px 10px rgba(185,126,31,.5), inset 0 1px 0 rgba(255,255,255,.55);
     }
     .tag.pop::before { content: "★"; color: #6b4410; }
-    /* Acı — közlenmiş kırmızı */
-    .tag.spicy {
-      background: linear-gradient(135deg, #e2583b, #a8281a);
-      box-shadow: 0 2px 9px rgba(168,40,26,.4), inset 0 1px 0 rgba(255,255,255,.25);
-    }
+    .tag.spicy { background: linear-gradient(135deg, #e2583b, #a8281a); box-shadow: 0 2px 10px rgba(168,40,26,.5); }
     .tag.spicy::before { content: "🌶"; }
-    /* Spesyal — zümrüt */
-    .tag.new {
-      background: linear-gradient(135deg, #46b978, #2c8a4c);
-      box-shadow: 0 2px 9px rgba(44,138,76,.38), inset 0 1px 0 rgba(255,255,255,.3);
-    }
+    .tag.new { background: linear-gradient(135deg, #46b978, #2c8a4c); box-shadow: 0 2px 10px rgba(44,138,76,.5); }
     .tag.new::before { content: "✦"; }
 
     /* ---------- Footer ---------- */
-    footer {
-      text-align: center;
-      margin: 40px 16px 10px;
-      color: var(--muted);
-      font-size: 12.5px;
-    }
+    footer { text-align: center; margin: 40px 16px 10px; color: var(--muted); font-size: 12.5px; position: relative; z-index: 1; }
     footer .note {
-      background: var(--cream-2);
-      border: 1px dashed var(--gold);
-      border-radius: 12px;
-      padding: 14px;
-      color: var(--brown);
-      margin-bottom: 18px;
-      font-size: 13px;
+      background: var(--glass); border: 1px solid rgba(226,180,90,.3);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-radius: 14px; padding: 15px; color: rgba(247,236,220,.85); margin-bottom: 18px; font-size: 13px;
     }
     footer .addr { line-height: 1.7; }
-    footer .addr a { color: var(--red); text-decoration: none; font-weight: 600; }
+    footer .addr a { color: var(--gold); text-decoration: none; font-weight: 700; }
+    footer .name { font-family: 'Playfair Display', serif; color: #fff; font-weight: 700; }
 
-    /* ---------- Bottom bar ---------- */
+    /* ---------- Call bar ---------- */
     .callbar {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 30;
-      background: rgba(251, 243, 230, .95);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--line);
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      background: rgba(26,13,8,.82);
+      -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--glass-brd);
       padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
     }
-    .callbar-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-    }
-    .callbar a {
-      flex: 1;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14.5px;
-      padding: 13px;
-      border-radius: 12px;
-      transition: .15s;
-    }
-    .btn-call { background: var(--red); color: var(--cream); }
-    .btn-call:active { background: var(--red-soft); }
-    .btn-map { background: #fff; color: var(--brown); border: 1px solid var(--line); }
+    .callbar-inner { max-width: 640px; margin: 0 auto; display: flex; gap: 10px; }
+    .callbar a { flex: 1; text-align: center; text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 13px; border-radius: 13px; transition: .15s; }
+    .btn-call { background: linear-gradient(135deg, #ecc978, var(--gold-deep)); color: #3a2410; box-shadow: 0 6px 18px rgba(201,146,46,.4); }
+    .btn-call:active { transform: scale(.99); }
+    .btn-map { background: var(--glass); color: var(--cream); border: 1px solid var(--glass-brd); }
 
-    .section-head { animation: fadeUp .55s both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
-
-    @media (min-width: 500px) {
-      header h1 { font-size: 52px; }
-    }
+    @media (min-width: 500px) { header h1 { font-size: 52px; } }
   </style>
 </head>
 <body>
+  <img class="bg" src="images/19231577_1779095186394.jpg" alt="" aria-hidden="true" />
+  <div class="scrim"></div>
+
   <div class="wrap">
-    <!-- ============ HEADER ============ -->
     <header>
       <a href="index.html" class="back-link">← Ana Sayfa</a>
-      <span class="badge">Bitez · Bodrum</span>
+      <div class="badge"><span class="ln"></span> Bitez · Bodrum <span class="ln r"></span></div>
       <h1>Mahalle <span>Döner</span></h1>
       <p class="tagline">Tavuk döner · Dürüm · Porsiyon · Burger</p>
       <div class="header-meta">
@@ -342,7 +207,6 @@
       </div>
     </header>
 
-    <!-- ============ NAV ============ -->
     <nav>
       <div class="nav-scroll">
         <a href="#durumler">Dürümler</a>
@@ -353,17 +217,13 @@
       </div>
     </nav>
 
-    <!-- ============ MENU ============ -->
     <main>
 
       <!-- Dürümler -->
       <section class="section" id="durumler">
         <div class="section-head">
           <div class="ico">🌯</div>
-          <div>
-            <h2>Dürümler</h2>
-            <p>Günlük taze tavuk döner, ince lavaşta</p>
-          </div>
+          <div><h2>Dürümler</h2><p>Günlük taze tavuk döner, ince lavaşta</p></div>
         </div>
 
         <div class="item">
@@ -373,8 +233,7 @@
               <div class="item-name">Tek Lavaş Tavuk Döner Dürüm <span class="tag pop">Popüler</span></div>
               <div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺192</div>
+            <div class="dots"></div><div class="price">₺192</div>
           </div>
         </div>
 
@@ -385,8 +244,7 @@
               <div class="item-name">İçi 1.5 Tek Lavaş Dürüm <span class="tag pop">Popüler</span></div>
               <div class="item-desc">1.5 kat döner içi, tek lavaş</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺240</div>
+            <div class="dots"></div><div class="price">₺240</div>
           </div>
         </div>
 
@@ -397,8 +255,7 @@
               <div class="item-name">Çift Lavaş Tavuk Döner Dürüm</div>
               <div class="item-desc">Çift kat lavaş, bol malzemeli</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺216</div>
+            <div class="dots"></div><div class="price">₺216</div>
           </div>
         </div>
 
@@ -409,8 +266,7 @@
               <div class="item-name">Zurna Tavuk Döner Dürüm <span class="tag pop">Popüler</span></div>
               <div class="item-desc">Uzun dürüm, bol döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺216</div>
+            <div class="dots"></div><div class="price">₺216</div>
           </div>
         </div>
 
@@ -421,8 +277,7 @@
               <div class="item-name">İçi 1.5 Zurna Dürüm <span class="tag pop">Popüler</span></div>
               <div class="item-desc">Uzun dürüm, 1.5 kat döner içi</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺280</div>
+            <div class="dots"></div><div class="price">₺280</div>
           </div>
         </div>
 
@@ -433,8 +288,7 @@
               <div class="item-name">Duble Tavuk Döner Dürüm <span class="tag pop">Doyurucu</span></div>
               <div class="item-desc">Ekstra bol döner içi</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺360</div>
+            <div class="dots"></div><div class="price">₺360</div>
           </div>
         </div>
 
@@ -445,8 +299,7 @@
               <div class="item-name">Tavuk Döner Burrito <span class="tag new">Spesyal</span></div>
               <div class="item-desc">Sarma usulü, bol içli spesyal</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺480</div>
+            <div class="dots"></div><div class="price">₺480</div>
           </div>
         </div>
       </section>
@@ -455,10 +308,7 @@
       <section class="section" id="porsiyon">
         <div class="section-head">
           <div class="ico">🍽️</div>
-          <div>
-            <h2>Porsiyonlar</h2>
-            <p>Tabak, pilav üstü ve makarna</p>
-          </div>
+          <div><h2>Porsiyonlar</h2><p>Tabak, pilav üstü ve makarna</p></div>
         </div>
 
         <div class="item">
@@ -468,8 +318,7 @@
               <div class="item-name">Tavuk Döner (Porsiyon)</div>
               <div class="item-desc">Tabakta tavuk döner, garnitür</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺216</div>
+            <div class="dots"></div><div class="price">₺216</div>
           </div>
         </div>
 
@@ -480,8 +329,7 @@
               <div class="item-name">Tavuk Döner (1.5 Porsiyon)</div>
               <div class="item-desc">Bol döner, garnitür</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺264</div>
+            <div class="dots"></div><div class="price">₺264</div>
           </div>
         </div>
 
@@ -492,8 +340,7 @@
               <div class="item-name">Pilav Üstü Tavuk Döner <span class="tag pop">Popüler</span></div>
               <div class="item-desc">Tereyağlı pilav, tavuk döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺280</div>
+            <div class="dots"></div><div class="price">₺280</div>
           </div>
         </div>
 
@@ -504,8 +351,7 @@
               <div class="item-name">Pilav Üstü Tavuk Döner (1.5)</div>
               <div class="item-desc">Tereyağlı pilav, bol döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺344</div>
+            <div class="dots"></div><div class="price">₺344</div>
           </div>
         </div>
 
@@ -516,8 +362,7 @@
               <div class="item-name">Makarna Üstü Tavuk Döner</div>
               <div class="item-desc">Soslu makarna üzeri tavuk döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺240</div>
+            <div class="dots"></div><div class="price">₺240</div>
           </div>
         </div>
       </section>
@@ -526,10 +371,7 @@
       <section class="section" id="ekmek">
         <div class="section-head">
           <div class="ico">🥖</div>
-          <div>
-            <h2>Ekmek Arası</h2>
-            <p>Somun ekmekte, doyurucu</p>
-          </div>
+          <div><h2>Ekmek Arası</h2><p>Somun ekmekte, doyurucu</p></div>
         </div>
 
         <div class="item">
@@ -539,8 +381,7 @@
               <div class="item-name">Yarım Somun Tavuk Döner</div>
               <div class="item-desc">Yarım somun ekmek, tavuk döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺192</div>
+            <div class="dots"></div><div class="price">₺192</div>
           </div>
         </div>
 
@@ -551,8 +392,7 @@
               <div class="item-name">Tam Somun Tavuk Döner</div>
               <div class="item-desc">Tam somun ekmek, bol döner</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺320</div>
+            <div class="dots"></div><div class="price">₺320</div>
           </div>
         </div>
       </section>
@@ -561,10 +401,7 @@
       <section class="section" id="burger">
         <div class="section-head">
           <div class="ico">🍔</div>
-          <div>
-            <h2>Burger</h2>
-            <p>Patates ve içecek ile menü</p>
-          </div>
+          <div><h2>Burger</h2><p>Patates ve içecek ile menü</p></div>
         </div>
 
         <div class="item">
@@ -574,8 +411,7 @@
               <div class="item-name">Burger Menü <span class="tag pop">Popüler</span></div>
               <div class="item-desc">Burger, patates, içecek</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺400</div>
+            <div class="dots"></div><div class="price">₺400</div>
           </div>
         </div>
 
@@ -586,8 +422,7 @@
               <div class="item-name">Burger Menü (2 Kişilik)</div>
               <div class="item-desc">2 burger, patates, içecekler</div>
             </div>
-            <div class="dots"></div>
-            <div class="price">₺880</div>
+            <div class="dots"></div><div class="price">₺880</div>
           </div>
         </div>
       </section>
@@ -596,95 +431,67 @@
       <section class="section" id="icecekler">
         <div class="section-head">
           <div class="ico">🥤</div>
-          <div>
-            <h2>İçecekler</h2>
-            <p>Serinleten seçenekler</p>
-          </div>
+          <div><h2>İçecekler</h2><p>Serinleten seçenekler</p></div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/19232930_1786548272436.jpg" alt="Ayran" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Ayran</div>
-              <div class="item-desc">Köpüklü</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺56</div>
+            <div class="item-body"><div class="item-name">Ayran</div><div class="item-desc">Köpüklü</div></div>
+            <div class="dots"></div><div class="price">₺56</div>
           </div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/19232915_1786548621690.jpg" alt="Şalgam" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Şalgam</div>
-              <div class="item-desc">Acılı / acısız</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺52</div>
+            <div class="item-body"><div class="item-name">Şalgam</div><div class="item-desc">Acılı / acısız</div></div>
+            <div class="dots"></div><div class="price">₺52</div>
           </div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/19232880_1786354299567.jpg" alt="Coca Cola 330 ml" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Coca Cola</div>
-              <div class="item-desc">330 ml</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺84</div>
+            <div class="item-body"><div class="item-name">Coca Cola</div><div class="item-desc">330 ml</div></div>
+            <div class="dots"></div><div class="price">₺84</div>
           </div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/19232894_1779098379673.png" alt="Fanta 330 ml" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Fanta</div>
-              <div class="item-desc">330 ml</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺84</div>
+            <div class="item-body"><div class="item-name">Fanta</div><div class="item-desc">330 ml</div></div>
+            <div class="dots"></div><div class="price">₺84</div>
           </div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/20772490_1786371600920.jpg" alt="Coca Cola 2.5 lt" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Coca Cola</div>
-              <div class="item-desc">2.5 lt</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺132</div>
+            <div class="item-body"><div class="item-name">Coca Cola</div><div class="item-desc">2.5 lt</div></div>
+            <div class="dots"></div><div class="price">₺132</div>
           </div>
         </div>
 
         <div class="item">
           <img class="item-thumb" src="images/19232932_1786548410292.jpg" alt="Su 500 ml" loading="lazy" />
           <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Su</div>
-              <div class="item-desc">500 ml</div>
-            </div>
-            <div class="dots"></div>
-            <div class="price">₺32</div>
+            <div class="item-body"><div class="item-name">Su</div><div class="item-desc">500 ml</div></div>
+            <div class="dots"></div><div class="price">₺32</div>
           </div>
         </div>
       </section>
 
     </main>
 
-    <!-- ============ FOOTER ============ -->
     <footer>
       <div class="note">
         Tüm ürünlerimiz günlük taze hazırlanır. Fiyatlarımıza KDV dahildir.<br />
         Çocuk menüsü, açık hava oturma alanı ve paket servis mevcuttur.
       </div>
       <p class="addr">
-        <strong>Mahalle Döner</strong><br />
+        <span class="name">Mahalle Döner</span><br />
         Bitez, Cami Sk. 13-11, 48470 Bodrum / Muğla<br />
         <a href="tel:+905331924831">0533 192 48 31</a>
       </p>
@@ -692,7 +499,6 @@
     </footer>
   </div>
 
-  <!-- ============ CALL BAR ============ -->
   <div class="callbar">
     <div class="callbar-inner">
       <a class="btn-call" href="tel:+905331924831">📞 Sipariş / Ara</a>
