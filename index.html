@@ -1,8 +1,477 @@
 <!DOCTYPE html>
-<html>
-<head><title>Batuhan Dagdelen</title></head>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahalle Döner — Menü</title>
+  <meta name="description" content="Mahalle Döner Bitez, Bodrum — tavuk döner dürüm, çıtır kanat ve çıtır burger menüsü." />
+  <meta name="theme-color" content="#7a1e12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #7a1e12;
+      --red-soft: #9c2a1a;
+      --cream: #fbf3e6;
+      --cream-2: #f4e6cf;
+      --brown: #3a2417;
+      --gold: #c9922e;
+      --gold-soft: #e2b45a;
+      --ink: #2b1a10;
+      --muted: #8a6f57;
+      --card: #fffaf1;
+      --line: #e7d6ba;
+      --shadow: 0 8px 24px rgba(58, 36, 23, .12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% -10%, #fff8ec, transparent 55%),
+        var(--cream);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 90px;
+    }
+
+    .wrap { max-width: 640px; margin: 0 auto; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: relative;
+      background:
+        linear-gradient(160deg, var(--red) 0%, var(--red-soft) 100%);
+      color: var(--cream);
+      text-align: center;
+      padding: 46px 24px 54px;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 26px;
+      background:
+        radial-gradient(circle at 12px -6px, var(--cream) 12px, transparent 13px) repeat-x;
+      background-size: 26px 26px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      border: 1px solid rgba(226, 180, 90, .5);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: .5px;
+    }
+    header h1 span { color: var(--gold-soft); }
+    header .tagline {
+      margin-top: 10px;
+      font-size: 15px;
+      color: rgba(251, 243, 230, .82);
+    }
+    .header-meta {
+      margin-top: 18px;
+      display: flex;
+      gap: 8px 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(251, 243, 230, .9);
+    }
+    .header-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+    /* ---------- Sticky category nav ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(58,36,23,.05);
+    }
+    .nav-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .nav-scroll a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--brown);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: .15s;
+    }
+    .nav-scroll a:hover { background: var(--cream-2); }
+
+    /* ---------- Sections ---------- */
+    main { padding: 8px 16px 0; }
+
+    .section { margin-top: 30px; scroll-margin-top: 66px; }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-head .ico {
+      font-size: 22px;
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      background: var(--cream-2);
+      border-radius: 12px;
+      flex: 0 0 auto;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .section-head p { font-size: 12.5px; color: var(--muted); }
+
+    /* ---------- Items ---------- */
+    .item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+    }
+    .item-body { flex: 1 1 auto; min-width: 0; }
+    .item-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .item-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .dots {
+      flex: 1 1 auto;
+      border-bottom: 2px dotted var(--line);
+      transform: translateY(-4px);
+      min-width: 14px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--red);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .tag.pop { background: #fbe4c9; color: #a35c12; }
+    .tag.spicy { background: #f7d7cf; color: #a8341f; }
+    .tag.new { background: #d9edd2; color: #35722a; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      margin: 40px 16px 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    footer .note {
+      background: var(--cream-2);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      padding: 14px;
+      color: var(--brown);
+      margin-bottom: 18px;
+      font-size: 13px;
+    }
+    footer .addr { line-height: 1.7; }
+    footer .addr a { color: var(--red); text-decoration: none; font-weight: 600; }
+
+    /* ---------- Bottom bar ---------- */
+    .callbar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 30;
+      background: rgba(251, 243, 230, .95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    }
+    .callbar-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .callbar a {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14.5px;
+      padding: 13px;
+      border-radius: 12px;
+      transition: .15s;
+    }
+    .btn-call { background: var(--red); color: var(--cream); }
+    .btn-call:active { background: var(--red-soft); }
+    .btn-map { background: #fff; color: var(--brown); border: 1px solid var(--line); }
+
+    @media (min-width: 500px) {
+      header h1 { font-size: 52px; }
+    }
+  </style>
+</head>
 <body>
-<h1>Batuhan Dagdelen</h1>
-<p>Game Developer</p>
+  <div class="wrap">
+    <!-- ============ HEADER ============ -->
+    <header>
+      <span class="badge">Bitez · Bodrum</span>
+      <h1>Mahalle <span>Döner</span></h1>
+      <p class="tagline">Tavuk döner · Çıtır kanat · Çıtır burger</p>
+      <div class="header-meta">
+        <span>🕐 Her gün 11:00 – 00:00</span>
+        <span>📍 Bitez, Cami Sk.</span>
+      </div>
+    </header>
+
+    <!-- ============ NAV ============ -->
+    <nav>
+      <div class="nav-scroll">
+        <a href="#doner">Döner & Dürüm</a>
+        <a href="#kanat">Çıtır Kanat</a>
+        <a href="#burger">Çıtır Burger</a>
+        <a href="#icecekler">İçecekler</a>
+      </div>
+    </nav>
+
+    <!-- ============ MENU ============ -->
+    <main>
+
+      <!-- Döner & Dürüm -->
+      <section class="section" id="doner">
+        <div class="section-head">
+          <div class="ico">🌯</div>
+          <div>
+            <h2>Döner & Dürüm</h2>
+            <p>Günlük taze tavuk döner, ince lavaşta</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Tek Lavaş Dürüm</div>
+            <div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺150</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Çift Lavaş Dürüm</div>
+            <div class="item-desc">Çift kat lavaş, bol malzemeli</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺170</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">İçi 1.5 Tek Lavaş Dürüm <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">1.5 kat döner içi, tek lavaş</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺190</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Zurna Dürüm</div>
+            <div class="item-desc">Uzun dürüm, bol döner</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺200</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Duble Dürüm <span class="tag pop">Doyurucu</span></div>
+            <div class="item-desc">Ekstra bol döner içi</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺300</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">1 Porsiyon Döner</div>
+            <div class="item-desc">Tabakta tavuk döner, garnitür</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺250</div>
+        </div>
+      </section>
+
+      <!-- Çıtır Kanat -->
+      <section class="section" id="kanat">
+        <div class="section-head">
+          <div class="ico">🍗</div>
+          <div>
+            <h2>Çıtır Kanat</h2>
+            <p>Çıtır çıtır, taze kızarmış</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">10'lu Çıtır Kanat Menü <span class="tag pop">Popüler</span></div>
+            <div class="item-desc">10 adet çıtır kanat, patates, sos</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺425</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">2 Kişilik Çıtır Kova</div>
+            <div class="item-desc">20 adet çıtır kanat, patates, soslar</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺800</div>
+        </div>
+      </section>
+
+      <!-- Çıtır Burger -->
+      <section class="section" id="burger">
+        <div class="section-head">
+          <div class="ico">🍔</div>
+          <div>
+            <h2>Çıtır Burger</h2>
+            <p>Çıtır tavuk göğsü, ev usulü sos</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Burger Menü</div>
+            <div class="item-desc">Çıtır burger, patates, içecek</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺350</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">2 Kişilik Burger Menü</div>
+            <div class="item-desc">2 burger, patates, içecekler</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺650</div>
+        </div>
+      </section>
+
+      <!-- İçecekler -->
+      <section class="section" id="icecekler">
+        <div class="section-head">
+          <div class="ico">🥤</div>
+          <div>
+            <h2>İçecekler</h2>
+            <p>Serinleten seçenekler</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Ayran</div>
+            <div class="item-desc">Köpüklü</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺—</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Kutu İçecek</div>
+            <div class="item-desc">Kola, fanta, gazoz</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺—</div>
+        </div>
+
+        <div class="item">
+          <div class="item-body">
+            <div class="item-name">Su</div>
+            <div class="item-desc">0.5 lt</div>
+          </div>
+          <div class="dots"></div>
+          <div class="price">₺—</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="note">
+        Tüm ürünlerimiz günlük taze hazırlanır. Fiyatlarımıza KDV dahildir.<br />
+        Çocuk menüsü, açık hava oturma alanı ve paket servis mevcuttur.
+      </div>
+      <p class="addr">
+        <strong>Mahalle Döner</strong><br />
+        Bitez, Cami Sk. 13-11, 48470 Bodrum / Muğla<br />
+        <a href="tel:+905331924831">0533 192 48 31</a>
+      </p>
+      <p style="margin-top:14px;">Afiyet olsun 🤍</p>
+    </footer>
+  </div>
+
+  <!-- ============ CALL BAR ============ -->
+  <div class="callbar">
+    <div class="callbar-inner">
+      <a class="btn-call" href="tel:+905331924831">📞 Sipariş / Ara</a>
+      <a class="btn-map" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">📍 Yol Tarifi</a>
+    </div>
+  </div>
 </body>
 </html>
