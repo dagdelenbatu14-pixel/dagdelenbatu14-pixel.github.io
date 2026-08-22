@@ -17,6 +17,8 @@
       --muted: rgba(247,236,220,.6);
       --red: #9c2a1a;
       --red-deep: #5f160d;
+      --wa: #25d366;
+      --wa-deep: #12a150;
       --ink: #1a0d08;
       --glass: rgba(255,255,255,.06);
       --glass-2: rgba(255,255,255,.1);
@@ -28,162 +30,96 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--cream);
-      background: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
-      padding-bottom: 92px;
-      overflow-x: hidden;
+      color: var(--cream); background: var(--ink);
+      -webkit-font-smoothing: antialiased; line-height: 1.5;
+      padding-bottom: 122px; overflow-x: hidden;
     }
 
-    /* ---------- Fixed photo background ---------- */
-    .bg {
-      position: fixed; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; z-index: -2;
-      filter: brightness(.4) saturate(1.1);
-    }
-    .scrim {
-      position: fixed; inset: 0; z-index: -1;
-      background: linear-gradient(180deg, rgba(26,13,8,.7) 0%, rgba(26,13,8,.9) 60%, rgba(26,13,8,.97) 100%);
-    }
+    .bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: brightness(.4) saturate(1.1); }
+    .scrim { position: fixed; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(26,13,8,.7) 0%, rgba(26,13,8,.9) 60%, rgba(26,13,8,.97) 100%); }
 
     .wrap { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
 
-    /* ---------- Header ---------- */
-    header {
-      position: relative;
-      text-align: center;
-      padding: 52px 24px 30px;
-      overflow: hidden;
-    }
+    /* Header */
+    header { position: relative; text-align: center; padding: 52px 24px 30px; overflow: hidden; }
     .back-link {
-      position: absolute; top: 16px; left: 16px; z-index: 2;
-      color: var(--cream);
+      position: absolute; top: 16px; left: 16px; z-index: 2; color: var(--cream);
       background: var(--glass); border: 1px solid var(--glass-brd);
       -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      text-decoration: none; font-size: 13px; font-weight: 600;
-      padding: 8px 14px; border-radius: 999px;
-      transition: background .15s ease;
+      text-decoration: none; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px; transition: background .15s ease;
     }
     .back-link:hover { background: var(--glass-2); }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 700;
-      color: var(--gold); margin-bottom: 12px;
-    }
+    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
     .badge .ln { width: 20px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
     .badge .ln.r { background: linear-gradient(90deg, var(--gold), transparent); }
-    header h1 {
-      font-family: 'Playfair Display', serif; font-weight: 900; font-size: 44px; line-height: 1;
-      color: #fff; letter-spacing: .5px; text-shadow: 0 5px 26px rgba(0,0,0,.6);
-    }
+    header h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 44px; line-height: 1; color: #fff; letter-spacing: .5px; text-shadow: 0 5px 26px rgba(0,0,0,.6); }
     header h1 span { color: var(--gold); }
     header .tagline { margin-top: 11px; font-size: 14px; color: rgba(247,236,220,.8); }
-    .header-meta {
-      margin-top: 16px; display: flex; gap: 8px 16px; justify-content: center; flex-wrap: wrap;
-      font-size: 12.5px; color: rgba(247,236,220,.78);
-    }
+    .header-meta { margin-top: 16px; display: flex; gap: 8px 16px; justify-content: center; flex-wrap: wrap; font-size: 12.5px; color: rgba(247,236,220,.78); }
     .header-meta span { display: inline-flex; align-items: center; gap: 6px; }
 
-    /* ---------- Sticky nav ---------- */
-    nav {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(26,13,8,.72);
-      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-brd);
-    }
-    .nav-scroll {
-      display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px;
-      max-width: 640px; margin: 0 auto; scrollbar-width: none;
-    }
+    /* Sticky nav */
+    nav { position: sticky; top: 0; z-index: 20; background: rgba(26,13,8,.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--glass-brd); }
+    .nav-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; max-width: 640px; margin: 0 auto; scrollbar-width: none; }
     .nav-scroll::-webkit-scrollbar { display: none; }
-    .nav-scroll a {
-      flex: 0 0 auto; text-decoration: none; font-size: 13.5px; font-weight: 600;
-      color: var(--cream); background: var(--glass); border: 1px solid var(--glass-brd);
-      padding: 8px 15px; border-radius: 999px; white-space: nowrap; transition: .15s;
-    }
+    .nav-scroll a { flex: 0 0 auto; text-decoration: none; font-size: 13.5px; font-weight: 600; color: var(--cream); background: var(--glass); border: 1px solid var(--glass-brd); padding: 8px 15px; border-radius: 999px; white-space: nowrap; transition: .15s; }
     .nav-scroll a:hover { background: var(--glass-2); border-color: rgba(226,180,90,.4); color: #fff; }
 
-    /* ---------- Sections ---------- */
+    /* Sections */
     main { padding: 8px 16px 0; }
     .section { margin-top: 30px; scroll-margin-top: 64px; animation: fadeUp .55s both; }
     .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .section-head .ico {
-      font-size: 21px; width: 44px; height: 44px; display: grid; place-items: center;
-      background: rgba(226,180,90,.14); border: 1px solid rgba(226,180,90,.3);
-      border-radius: 13px; flex: 0 0 auto;
-    }
-    .section-head h2 {
-      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #fff;
-    }
+    .section-head .ico { font-size: 21px; width: 44px; height: 44px; display: grid; place-items: center; background: rgba(226,180,90,.14); border: 1px solid rgba(226,180,90,.3); border-radius: 13px; flex: 0 0 auto; }
+    .section-head h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #fff; }
     .section-head p { font-size: 12.5px; color: var(--muted); }
 
-    /* ---------- Items ---------- */
-    .item {
-      display: flex; align-items: center; gap: 13px;
-      background: var(--glass); border: 1px solid var(--glass-brd);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-      border-radius: 16px; padding: 11px 13px; margin-bottom: 11px;
-      box-shadow: 0 8px 26px rgba(0,0,0,.28);
-      transition: transform .16s ease, background .16s ease, border-color .16s ease;
-    }
+    /* Item cards (with photo) */
+    .item { display: flex; align-items: center; gap: 13px; background: var(--glass); border: 1px solid var(--glass-brd); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-radius: 16px; padding: 11px 13px; margin-bottom: 11px; box-shadow: 0 8px 26px rgba(0,0,0,.28); transition: transform .16s ease, background .16s ease, border-color .16s ease; }
     .item:hover { transform: translateY(-3px); background: var(--glass-2); border-color: rgba(226,180,90,.35); }
-    .item-thumb {
-      width: 78px; height: 78px; flex: 0 0 auto; border-radius: 13px;
-      object-fit: cover; border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 4px 12px rgba(0,0,0,.35); transition: transform .3s ease;
-    }
+    .item-thumb { width: 78px; height: 78px; flex: 0 0 auto; border-radius: 13px; object-fit: cover; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 4px 12px rgba(0,0,0,.35); transition: transform .3s ease; }
     .item:hover .item-thumb { transform: scale(1.06); }
     .item-main { flex: 1 1 auto; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
     .item-body { flex: 1 1 auto; min-width: 0; }
-    .item-name {
-      font-weight: 700; font-size: 15.5px; color: #fff;
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
+    .item-name { font-weight: 700; font-size: 15.5px; color: #fff; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .item-desc { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
     .dots { flex: 1 1 auto; border-bottom: 1px dotted rgba(255,255,255,.2); min-width: 12px; align-self: flex-end; margin-bottom: 5px; }
     .price { font-weight: 800; font-size: 16px; color: var(--gold); white-space: nowrap; flex: 0 0 auto; align-self: center; }
 
-    .tag {
-      display: inline-flex; align-items: center; gap: 3px;
-      font-size: 9.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase;
-      padding: 3px 9px 3px 8px; border-radius: 999px; color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
-    }
+    /* Drink rows (no photo) */
+    .drow { display: flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid var(--glass-brd); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-radius: 12px; padding: 12px 15px; margin-bottom: 8px; transition: background .16s ease, border-color .16s ease; }
+    .drow:hover { background: var(--glass-2); border-color: rgba(226,180,90,.3); }
+    .drow .di { font-size: 16px; flex: 0 0 auto; opacity: .9; }
+    .drow .dn { font-weight: 600; font-size: 14.5px; color: #fff; }
+    .drow .dsub { color: var(--muted); font-weight: 500; font-size: 12.5px; margin-left: 4px; }
+    .drow .dd { flex: 1 1 auto; border-bottom: 1px dotted rgba(255,255,255,.18); min-width: 12px; }
+    .drow .dv { font-weight: 800; font-size: 15px; color: var(--gold); white-space: nowrap; }
+
+    /* Tags */
+    .tag { display: inline-flex; align-items: center; gap: 3px; font-size: 9.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; padding: 3px 9px 3px 8px; border-radius: 999px; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
     .tag::before { font-size: 10px; line-height: 1; }
-    .tag.pop {
-      background: linear-gradient(135deg, #f6cf7d 0%, #dca43a 48%, #b97e1f 100%);
-      color: #3a2408; box-shadow: 0 2px 10px rgba(185,126,31,.5), inset 0 1px 0 rgba(255,255,255,.55);
-    }
+    .tag.pop { background: linear-gradient(135deg, #f6cf7d 0%, #dca43a 48%, #b97e1f 100%); color: #3a2408; box-shadow: 0 2px 10px rgba(185,126,31,.5), inset 0 1px 0 rgba(255,255,255,.55); }
     .tag.pop::before { content: "★"; color: #6b4410; }
     .tag.spicy { background: linear-gradient(135deg, #e2583b, #a8281a); box-shadow: 0 2px 10px rgba(168,40,26,.5); }
     .tag.spicy::before { content: "🌶"; }
     .tag.new { background: linear-gradient(135deg, #46b978, #2c8a4c); box-shadow: 0 2px 10px rgba(44,138,76,.5); }
     .tag.new::before { content: "✦"; }
 
-    /* ---------- Footer ---------- */
+    /* Footer */
     footer { text-align: center; margin: 40px 16px 10px; color: var(--muted); font-size: 12.5px; position: relative; z-index: 1; }
-    footer .note {
-      background: var(--glass); border: 1px solid rgba(226,180,90,.3);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      border-radius: 14px; padding: 15px; color: rgba(247,236,220,.85); margin-bottom: 18px; font-size: 13px;
-    }
+    footer .note { background: var(--glass); border: 1px solid rgba(226,180,90,.3); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-radius: 14px; padding: 15px; color: rgba(247,236,220,.85); margin-bottom: 18px; font-size: 13px; }
     footer .addr { line-height: 1.7; }
     footer .addr a { color: var(--gold); text-decoration: none; font-weight: 700; }
     footer .name { font-family: 'Playfair Display', serif; color: #fff; font-weight: 700; }
 
-    /* ---------- Call bar ---------- */
-    .callbar {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-      background: rgba(26,13,8,.82);
-      -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
-      border-top: 1px solid var(--glass-brd);
-      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    }
-    .callbar-inner { max-width: 640px; margin: 0 auto; display: flex; gap: 10px; }
-    .callbar a { flex: 1; text-align: center; text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 13px; border-radius: 13px; transition: .15s; }
-    .btn-call { background: linear-gradient(135deg, #ecc978, var(--gold-deep)); color: #3a2410; box-shadow: 0 6px 18px rgba(201,146,46,.4); }
-    .btn-call:active { transform: scale(.99); }
+    /* Call bar */
+    .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(26,13,8,.85); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-top: 1px solid var(--glass-brd); padding: 11px 16px calc(11px + env(safe-area-inset-bottom)); }
+    .callbar-inner { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 9px; }
+    .btn-wa { display: flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; font-weight: 800; font-size: 15.5px; padding: 14px; border-radius: 14px; background: linear-gradient(135deg, var(--wa), var(--wa-deep)); color: #fff; box-shadow: 0 8px 22px rgba(18,161,80,.45); transition: transform .15s ease; }
+    .btn-wa:active { transform: scale(.99); }
+    .btn-wa .wa-ic { font-size: 19px; }
+    .callbar-row { display: flex; gap: 9px; }
+    .callbar-row a { flex: 1; text-align: center; text-decoration: none; font-weight: 700; font-size: 14px; padding: 11px; border-radius: 12px; transition: .15s; }
+    .btn-call { background: var(--glass); color: var(--cream); border: 1px solid var(--glass-brd); }
     .btn-map { background: var(--glass); color: var(--cream); border: 1px solid var(--glass-brd); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
@@ -210,8 +146,8 @@
     <nav>
       <div class="nav-scroll">
         <a href="#durumler">Dürümler</a>
-        <a href="#porsiyon">Porsiyonlar</a>
         <a href="#ekmek">Ekmek Arası</a>
+        <a href="#porsiyon">Porsiyonlar</a>
         <a href="#burger">Burger</a>
         <a href="#icecekler">İçecekler</a>
       </div>
@@ -221,266 +157,130 @@
 
       <!-- Dürümler -->
       <section class="section" id="durumler">
-        <div class="section-head">
-          <div class="ico">🌯</div>
-          <div><h2>Dürümler</h2><p>Günlük taze tavuk döner, ince lavaşta</p></div>
-        </div>
+        <div class="section-head"><div class="ico">🌯</div><div><h2>Dürümler</h2><p>Günlük taze tavuk döner, ince lavaşta</p></div></div>
 
         <div class="item">
-          <img class="item-thumb" src="images/19231574_1785867642498.jpg" alt="Tek Lavaş Tavuk Döner Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Tek Lavaş Tavuk Döner Dürüm <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div>
-            </div>
-            <div class="dots"></div><div class="price">₺192</div>
-          </div>
+          <img class="item-thumb" src="images/19231574_1785867642498.jpg" alt="Tek Lavaş Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Tek Lavaş Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">Tek kat lavaş, tavuk döner, sebze, sos</div></div><div class="dots"></div><div class="price">₺160</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231576_1785867881405.jpg" alt="İçi 1.5 Tek Lavaş Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">İçi 1.5 Tek Lavaş Dürüm <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">1.5 kat döner içi, tek lavaş</div>
-            </div>
-            <div class="dots"></div><div class="price">₺240</div>
-          </div>
+          <img class="item-thumb" src="images/19231575_1785867783576.jpg" alt="Çift Lavaş Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Çift Lavaş Tavuk Döner</div><div class="item-desc">Çift kat lavaş, bol malzemeli</div></div><div class="dots"></div><div class="price">₺180</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231575_1785867783576.jpg" alt="Çift Lavaş Tavuk Döner Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Çift Lavaş Tavuk Döner Dürüm</div>
-              <div class="item-desc">Çift kat lavaş, bol malzemeli</div>
-            </div>
-            <div class="dots"></div><div class="price">₺216</div>
-          </div>
+          <img class="item-thumb" src="images/19231576_1785867881405.jpg" alt="Tek Lavaş 1.5 Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Tek Lavaş 1.5 Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">1.5 kat döner içi, tek lavaş</div></div><div class="dots"></div><div class="price">₺200</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231577_1779095186394.jpg" alt="Zurna Tavuk Döner Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Zurna Tavuk Döner Dürüm <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">Uzun dürüm, bol döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺216</div>
-          </div>
+          <img class="item-thumb" src="images/19231575_1785867783576.jpg" alt="Çift Lavaş 1.5 Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Çift Lavaş 1.5 Tavuk Döner</div><div class="item-desc">1.5 kat döner içi, çift lavaş</div></div><div class="dots"></div><div class="price">₺220</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231578_1779095200319.jpg" alt="İçi 1.5 Zurna Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">İçi 1.5 Zurna Dürüm <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">Uzun dürüm, 1.5 kat döner içi</div>
-            </div>
-            <div class="dots"></div><div class="price">₺280</div>
-          </div>
+          <img class="item-thumb" src="images/19231579_1785868147523.jpg" alt="Çift Lavaş Duble Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Çift Lavaş Duble Tavuk Döner <span class="tag pop">Doyurucu</span></div><div class="item-desc">Ekstra bol döner içi, çift lavaş</div></div><div class="dots"></div><div class="price">₺300</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231579_1785868147523.jpg" alt="Duble Tavuk Döner Dürüm" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Duble Tavuk Döner Dürüm <span class="tag pop">Doyurucu</span></div>
-              <div class="item-desc">Ekstra bol döner içi</div>
-            </div>
-            <div class="dots"></div><div class="price">₺360</div>
-          </div>
+          <img class="item-thumb" src="images/19231577_1779095186394.jpg" alt="Zurna Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Zurna Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">Uzun dürüm, bol döner</div></div><div class="dots"></div><div class="price">₺220</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/burrito.jpg" alt="Tavuk Döner Burrito" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Tavuk Döner Burrito <span class="tag new">Spesyal</span></div>
-              <div class="item-desc">Sarma usulü, bol içli spesyal</div>
-            </div>
-            <div class="dots"></div><div class="price">₺480</div>
-          </div>
+          <img class="item-thumb" src="images/19231578_1779095200319.jpg" alt="Zurna 1.5 Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Zurna 1.5 Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">Uzun dürüm, 1.5 kat döner içi</div></div><div class="dots"></div><div class="price">₺240</div></div>
         </div>
-      </section>
-
-      <!-- Porsiyonlar -->
-      <section class="section" id="porsiyon">
-        <div class="section-head">
-          <div class="ico">🍽️</div>
-          <div><h2>Porsiyonlar</h2><p>Tabak, pilav üstü ve makarna</p></div>
-        </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231580_1785868728213.jpg" alt="Tavuk Döner Porsiyon" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Tavuk Döner (Porsiyon)</div>
-              <div class="item-desc">Tabakta tavuk döner, garnitür</div>
-            </div>
-            <div class="dots"></div><div class="price">₺216</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19231581_1785868731276.jpg" alt="Tavuk Döner 1.5 Porsiyon" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Tavuk Döner (1.5 Porsiyon)</div>
-              <div class="item-desc">Bol döner, garnitür</div>
-            </div>
-            <div class="dots"></div><div class="price">₺264</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19231583_1785933237082.jpg" alt="Pilav Üstü Tavuk Döner" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Pilav Üstü Tavuk Döner <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">Tereyağlı pilav, tavuk döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺280</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19231584_1785933294515.jpg" alt="Pilav Üstü Tavuk Döner 1.5 Porsiyon" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Pilav Üstü Tavuk Döner (1.5)</div>
-              <div class="item-desc">Tereyağlı pilav, bol döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺344</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/20688240_1785933906077.jpg" alt="Makarna Üstü Tavuk Döner" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Makarna Üstü Tavuk Döner</div>
-              <div class="item-desc">Soslu makarna üzeri tavuk döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺240</div>
-          </div>
+          <img class="item-thumb" src="images/burrito.jpg" alt="Burrito Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Burrito Tavuk Döner <span class="tag new">Spesyal</span></div><div class="item-desc">Sarma usulü, bol içli spesyal</div></div><div class="dots"></div><div class="price">₺600</div></div>
         </div>
       </section>
 
       <!-- Ekmek Arası -->
       <section class="section" id="ekmek">
-        <div class="section-head">
-          <div class="ico">🥖</div>
-          <div><h2>Ekmek Arası</h2><p>Somun ekmekte, doyurucu</p></div>
-        </div>
+        <div class="section-head"><div class="ico">🥖</div><div><h2>Ekmek Arası</h2><p>Somun ekmekte, doyurucu</p></div></div>
 
         <div class="item">
           <img class="item-thumb" src="images/20673714_1785933087245.jpg" alt="Yarım Somun Tavuk Döner" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Yarım Somun Tavuk Döner</div>
-              <div class="item-desc">Yarım somun ekmek, tavuk döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺192</div>
-          </div>
+          <div class="item-main"><div class="item-body"><div class="item-name">Yarım Somun Tavuk Döner</div><div class="item-desc">Yarım somun ekmek, tavuk döner</div></div><div class="dots"></div><div class="price">₺160</div></div>
         </div>
-
+        <div class="item">
+          <img class="item-thumb" src="images/20673714_1785933087245.jpg" alt="3 Çeyrek Somun Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">3 Çeyrek Somun Tavuk Döner</div><div class="item-desc">Bol döner, somun ekmek</div></div><div class="dots"></div><div class="price">₺250</div></div>
+        </div>
         <div class="item">
           <img class="item-thumb" src="images/20673728_1785933067542.jpg" alt="Tam Somun Tavuk Döner" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Tam Somun Tavuk Döner</div>
-              <div class="item-desc">Tam somun ekmek, bol döner</div>
-            </div>
-            <div class="dots"></div><div class="price">₺320</div>
-          </div>
+          <div class="item-main"><div class="item-body"><div class="item-name">Tam Somun Tavuk Döner</div><div class="item-desc">Tam somun ekmek, bol döner</div></div><div class="dots"></div><div class="price">₺320</div></div>
+        </div>
+      </section>
+
+      <!-- Porsiyonlar -->
+      <section class="section" id="porsiyon">
+        <div class="section-head"><div class="ico">🍽️</div><div><h2>Porsiyonlar</h2><p>Tabak, pilav üstü, iskender ve beyti</p></div></div>
+
+        <div class="item">
+          <img class="item-thumb" src="images/19231580_1785868728213.jpg" alt="Porsiyon Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Porsiyon Tavuk Döner</div><div class="item-desc">Tabakta tavuk döner, garnitür</div></div><div class="dots"></div><div class="price">₺280</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231581_1785868731276.jpg" alt="Porsiyon 1.5 Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Porsiyon 1.5 Tavuk Döner</div><div class="item-desc">Bol döner, garnitür</div></div><div class="dots"></div><div class="price">₺300</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231583_1785933237082.jpg" alt="Pilav Üstü Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Pilav Üstü Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">Tereyağlı pilav, tavuk döner</div></div><div class="dots"></div><div class="price">₺300</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231584_1785933294515.jpg" alt="Pilav Üstü 1.5 Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Pilav Üstü 1.5 Tavuk Döner</div><div class="item-desc">Tereyağlı pilav, bol döner</div></div><div class="dots"></div><div class="price">₺350</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231580_1785868728213.jpg" alt="Patates Üstü Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Patates Üstü Tavuk Döner</div><div class="item-desc">Çıtır patates üzeri tavuk döner</div></div><div class="dots"></div><div class="price">₺250</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/20688240_1785933906077.jpg" alt="Makarna Üstü Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Makarna Üstü Tavuk Döner</div><div class="item-desc">Soslu makarna üzeri tavuk döner</div></div><div class="dots"></div><div class="price">₺300</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231579_1785868147523.jpg" alt="Beyti Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Beyti Tavuk Döner</div><div class="item-desc">Lavaşa sarılı, sos ve yoğurt ile</div></div><div class="dots"></div><div class="price">₺300</div></div>
+        </div>
+        <div class="item">
+          <img class="item-thumb" src="images/19231583_1785933237082.jpg" alt="İskender Tavuk Döner" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">İskender Tavuk Döner <span class="tag pop">Popüler</span></div><div class="item-desc">Pide üzeri döner, tereyağı, domates sos, yoğurt</div></div><div class="dots"></div><div class="price">₺300</div></div>
         </div>
       </section>
 
       <!-- Burger -->
       <section class="section" id="burger">
-        <div class="section-head">
-          <div class="ico">🍔</div>
-          <div><h2>Burger</h2><p>Patates ve içecek ile menü</p></div>
-        </div>
+        <div class="section-head"><div class="ico">🍔</div><div><h2>Burger</h2><p>Patates ve içecek ile kutu menü</p></div></div>
 
         <div class="item">
-          <img class="item-thumb" src="images/19231590_1785928039207.jpg" alt="Burger Menü" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Burger Menü <span class="tag pop">Popüler</span></div>
-              <div class="item-desc">Burger, patates, içecek</div>
-            </div>
-            <div class="dots"></div><div class="price">₺400</div>
-          </div>
+          <img class="item-thumb" src="images/19231590_1785928039207.jpg" alt="Burger Box" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Burger Box <span class="tag pop">Popüler</span></div><div class="item-desc">Burger, patates, içecek</div></div><div class="dots"></div><div class="price">₺400</div></div>
         </div>
-
         <div class="item">
-          <img class="item-thumb" src="images/19231591_1785928704605.jpg" alt="Burger Menü 2 Kişilik" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body">
-              <div class="item-name">Burger Menü (2 Kişilik)</div>
-              <div class="item-desc">2 burger, patates, içecekler</div>
-            </div>
-            <div class="dots"></div><div class="price">₺880</div>
-          </div>
+          <img class="item-thumb" src="images/19231591_1785928704605.jpg" alt="Burger Box Duo" loading="lazy" />
+          <div class="item-main"><div class="item-body"><div class="item-name">Burger Box Duo</div><div class="item-desc">2 burger, patates, içecekler</div></div><div class="dots"></div><div class="price">₺800</div></div>
         </div>
       </section>
 
       <!-- İçecekler -->
       <section class="section" id="icecekler">
-        <div class="section-head">
-          <div class="ico">🥤</div>
-          <div><h2>İçecekler</h2><p>Serinleten seçenekler</p></div>
-        </div>
+        <div class="section-head"><div class="ico">🥤</div><div><h2>İçecekler</h2><p>Serinleten seçenekler</p></div></div>
 
-        <div class="item">
-          <img class="item-thumb" src="images/19232930_1786548272436.jpg" alt="Ayran" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Ayran</div><div class="item-desc">Köpüklü</div></div>
-            <div class="dots"></div><div class="price">₺56</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19232915_1786548621690.jpg" alt="Şalgam" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Şalgam</div><div class="item-desc">Acılı / acısız</div></div>
-            <div class="dots"></div><div class="price">₺52</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19232880_1786354299567.jpg" alt="Coca Cola 330 ml" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Coca Cola</div><div class="item-desc">330 ml</div></div>
-            <div class="dots"></div><div class="price">₺84</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19232894_1779098379673.png" alt="Fanta 330 ml" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Fanta</div><div class="item-desc">330 ml</div></div>
-            <div class="dots"></div><div class="price">₺84</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/20772490_1786371600920.jpg" alt="Coca Cola 2.5 lt" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Coca Cola</div><div class="item-desc">2.5 lt</div></div>
-            <div class="dots"></div><div class="price">₺132</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img class="item-thumb" src="images/19232932_1786548410292.jpg" alt="Su 500 ml" loading="lazy" />
-          <div class="item-main">
-            <div class="item-body"><div class="item-name">Su</div><div class="item-desc">500 ml</div></div>
-            <div class="dots"></div><div class="price">₺32</div>
-          </div>
-        </div>
+        <div class="drow"><span class="di">💧</span><span class="dn">Su <span class="dsub">500 ml</span></span><span class="dd"></span><span class="dv">₺20</span></div>
+        <div class="drow"><span class="di">☕</span><span class="dn">Kahve</span><span class="dd"></span><span class="dv">₺50</span></div>
+        <div class="drow"><span class="di">🥛</span><span class="dn">Ayran <span class="dsub">275 ml</span></span><span class="dd"></span><span class="dv">₺50</span></div>
+        <div class="drow"><span class="di">🥛</span><span class="dn">Ayran <span class="dsub">1 L</span></span><span class="dd"></span><span class="dv">₺150</span></div>
+        <div class="drow"><span class="di">🟣</span><span class="dn">Şalgam Acısız <span class="dsub">300 ml</span></span><span class="dd"></span><span class="dv">₺50</span></div>
+        <div class="drow"><span class="di">🌶️</span><span class="dn">Şalgam Acılı <span class="dsub">300 ml</span></span><span class="dd"></span><span class="dv">₺50</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Sprite <span class="dsub">330 ml</span></span><span class="dd"></span><span class="dv">₺85</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Fanta <span class="dsub">330 ml</span></span><span class="dd"></span><span class="dv">₺85</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola <span class="dsub">330 ml</span></span><span class="dd"></span><span class="dv">₺85</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola Zero <span class="dsub">330 ml</span></span><span class="dd"></span><span class="dv">₺85</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola <span class="dsub">1 L</span></span><span class="dd"></span><span class="dv">₺105</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola Zero <span class="dsub">1 L</span></span><span class="dd"></span><span class="dv">₺105</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola <span class="dsub">2.5 L</span></span><span class="dd"></span><span class="dv">₺125</span></div>
+        <div class="drow"><span class="di">🥤</span><span class="dn">Coca Cola Zero <span class="dsub">2.5 L</span></span><span class="dd"></span><span class="dv">₺125</span></div>
       </section>
 
     </main>
@@ -501,8 +301,13 @@
 
   <div class="callbar">
     <div class="callbar-inner">
-      <a class="btn-call" href="tel:+905331924831">📞 Sipariş / Ara</a>
-      <a class="btn-map" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">📍 Yol Tarifi</a>
+      <a class="btn-wa" href="https://wa.me/905331924831?text=Merhaba!%20Mahalle%20D%C3%B6ner'e%20sipari%C5%9F%20vermek%20istiyorum%20%F0%9F%8C%AF" target="_blank" rel="noopener">
+        <span class="wa-ic">💬</span> WhatsApp'tan Sipariş Ver
+      </a>
+      <div class="callbar-row">
+        <a class="btn-call" href="tel:+905331924831">📞 Ara</a>
+        <a class="btn-map" href="https://www.google.com/maps/place/Mahalle+D%C3%B6ner/@37.0427627,27.377442,17z/data=!4m6!3m5!1s0x14be6d2a2d23bf01:0x50c6f681c5d2893c!8m2!3d37.0427584!4d27.3800169!16s%2Fg%2F11zbx4twwd" target="_blank" rel="noopener">📍 Yol Tarifi</a>
+      </div>
     </div>
   </div>
 </body>

@@ -137,7 +137,7 @@
     .link:hover::after { opacity: 1; }
     .link:active { transform: scale(.985); }
     .links .link:nth-child(1){ animation-delay:.34s } .links .link:nth-child(2){ animation-delay:.4s }
-    .links .link:nth-child(3){ animation-delay:.46s } .links .link:nth-child(4){ animation-delay:.52s }
+    .links .link:nth-child(3){ animation-delay:.46s } .links .link:nth-child(4){ animation-delay:.52s } .links .link:nth-child(5){ animation-delay:.58s }
 
     .link .ic {
       width: 50px; height: 50px; flex: 0 0 auto;
@@ -150,6 +150,10 @@
       border-color: rgba(226,180,90,.3);
       box-shadow: 0 4px 14px rgba(95,22,13,.5);
     }
+    .link.wa { background: linear-gradient(135deg, rgba(37,211,102,.2), rgba(18,161,80,.28)); border-color: rgba(37,211,102,.5); }
+    .link.wa:hover { background: linear-gradient(135deg, rgba(37,211,102,.3), rgba(18,161,80,.38)); border-color: rgba(37,211,102,.75); }
+    .link.wa::after { background: linear-gradient(#3ff07f, #12a150); }
+    .link.wa .ic { background: linear-gradient(140deg, #25d366, #12a150); border-color: transparent; box-shadow: 0 4px 14px rgba(18,161,80,.5); }
     .link .tx { flex: 1 1 auto; min-width: 0; }
     .link .tx b { display: block; font-size: 16.5px; font-weight: 700; color: #fff; }
     .link .tx small { color: rgba(247,236,220,.62); font-size: 12.5px; }
@@ -212,6 +216,12 @@
       <a class="link menu" href="menu.html">
         <span class="ic">🍽️</span>
         <span class="tx"><b>Menü</b><small>Ürünler, fiyatlar ve fotoğraflar</small></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link wa" href="https://wa.me/905331924831?text=Merhaba!%20Mahalle%20D%C3%B6ner'e%20sipari%C5%9F%20vermek%20istiyorum%20%F0%9F%8C%AF" target="_blank" rel="noopener">
+        <span class="ic">💬</span>
+        <span class="tx"><b>WhatsApp'tan Sipariş Ver</b><small>Hemen sipariş oluştur</small></span>
         <span class="arrow">›</span>
       </a>
 
