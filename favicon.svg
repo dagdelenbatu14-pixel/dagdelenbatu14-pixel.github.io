@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- soft cream background circle -->
+  <circle cx="32" cy="32" r="30" fill="#f5ead8"/>
+
+  <!-- olive leaf, organic angle -->
+  <g transform="rotate(-28 32 32)">
+    <!-- leaf body -->
+    <path d="M 32 11 C 43 22 43 42 32 53 C 21 42 21 22 32 11 Z"
+          fill="#c97b5d"/>
+    <!-- midrib (central vein) -->
+    <path d="M 32 14 Q 32 32 32 50"
+          stroke="#fdf8ed" stroke-width="1.4" stroke-linecap="round"
+          fill="none" opacity="0.55"/>
+    <!-- subtle highlight on top edge -->
+    <path d="M 32 11 C 38 16 41 22 42 30"
+          stroke="#d99076" stroke-width="1" stroke-linecap="round"
+          fill="none" opacity="0.6"/>
+  </g>
+</svg>
